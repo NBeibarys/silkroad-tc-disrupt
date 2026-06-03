@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { GalleryCarousel } from '@/components/ui/gallery-carousel'
+import { AdvantageSection } from '@/components/ui/advantage-section'
 import {
   SmoothScroll, ScrollProgress, AnimatedHeading, Reveal,
   ParallaxImage, Magnetic, Tilt, CountUp,
@@ -156,36 +157,7 @@ export default function V2Minimal() {
           </div>
         </section>
 
-        {/* ADVANTAGE */}
-        <section className="px-8 bg-[#0a0a0a]">
-          <div className="max-w-[1400px] mx-auto grid md:grid-cols-2 gap-16">
-            <div className="py-24 md:py-32">
-              <div className="md:sticky md:top-28">
-                <AnimatedHeading text={'Gain your\nunfair\nadvantage'}
-                  className="font-archivo font-black tracking-[-0.05em] leading-[0.88] text-[clamp(2.8rem,8vw,7rem)] text-white"
-                  highlight={['unfair', 'advantage']} accentClass="text-[#09A43E]" />
-                <Magnetic strength={0.4}>
-                  <a href={APPLY_URL} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex mt-10 items-center gap-3 text-lg font-medium bg-[#09A43E] text-white px-9 py-4 rounded-full hover:bg-white hover:text-neutral-900 transition-colors cursor-pointer">
-                    Apply Now <span>→</span>
-                  </a>
-                </Magnetic>
-              </div>
-            </div>
-            <div className="md:py-32 flex flex-col justify-center gap-px border-t border-[#1e1e1e]">
-              {ADVANTAGES.map((a, i) => (
-                <Reveal key={a.title} delay={i * 0.05}>
-                  <div className="py-10 border-b border-[#1e1e1e] relative">
-                    <span className="absolute right-0 top-1/2 -translate-y-1/2 font-archivo font-black text-[6rem] leading-none text-[#141414] select-none pointer-events-none">0{i + 1}</span>
-                    <span className="font-mono text-sm text-[#09A43E]">0{i + 1}</span>
-                    <h3 className="text-3xl md:text-4xl font-semibold tracking-tight mt-3 mb-3 text-white relative">{a.title}</h3>
-                    <p className="text-neutral-500 leading-relaxed text-lg relative">{a.description}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <AdvantageSection />
 
         {/* ── OFFER ── */}
         <section id="s-offer" className="py-24 md:py-32 px-8 border-t border-neutral-200">
