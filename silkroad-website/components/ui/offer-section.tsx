@@ -5,117 +5,109 @@ import { motion } from 'framer-motion'
 import { OFFER, APPLY_URL } from '@/lib/data'
 import { Magnetic } from './motion'
 
-const EASE = [0.16, 1, 0.3, 1] as const
+const EASE     = [0.16, 1, 0.3, 1] as const
+const CHARGE_INTERVAL = 380   // ms between each number charging up
 
-function OfferCol({ title, description, index, wm }: {
+function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
   title: string; description: string
   index: number; wm: string
+  active: boolean
+  hovered: boolean
+  onHover: (h: boolean) => void
 }) {
-  const ref   = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
-  const [active,  setActive]  = useState(false)
-  const [hovered, setHovered] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-
-    // slide-in + auto-activate on entry — staggered, works on both PC and mobile
-    const entryObs = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return
-      const delay = index * 130
-      setTimeout(() => setVisible(true), delay)
-      setTimeout(() => setActive(true), delay + 180)
-      entryObs.disconnect()
-    }, { rootMargin: '-40px' })
-
-    entryObs.observe(el)
-    return () => entryObs.disconnect()
-  }, [index])
+  const borderClasses = [
+    'relative px-4 py-6 md:py-12',
+    index % 2 === 0 ? 'border-r border-neutral-200' : '',
+    index < 2      ? 'border-b border-neutral-200' : '',
+    'md:border-b-0',
+    index < 3      ? 'md:border-r md:border-neutral-200' : 'md:border-r-0',
+    index === 0 ? 'md:pl-0 md:pr-8' : '',
+    index === 3 ? 'md:pl-8 md:pr-0' : '',
+    index === 1 || index === 2 ? 'md:px-8' : '',
+  ].filter(Boolean).join(' ')
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 24 }}
-      animate={visible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 1.0, ease: EASE }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      className={[
-        'relative px-4 py-6 md:py-12',
-        // mobile 2x2: right border on col 0 and 2, bottom border on row 0
-        index % 2 === 0 ? 'border-r border-neutral-200' : '',
-        index < 2 ? 'border-b border-neutral-200' : '',
-        // desktop overrides
-        'md:border-b-0',
-        index === 3 ? 'md:border-r-0' : 'md:border-r md:border-neutral-200',
-        index === 0 ? 'md:pl-0 md:pr-8' : '',
-        index === 3 ? 'md:pl-8 md:pr-0' : '',
-        index === 1 || index === 2 ? 'md:px-8' : '',
-      ].filter(Boolean).join(' ')}
+    <div
+      className={borderClasses}
+      onMouseEnter={() => onHover(true)}
+      onMouseLeave={() => onHover(false)}
     >
-      {/* vertical green line — auto on active, extra depth on hover */}
+      {/* vertical line — grows when charged, brighter on hover */}
       <motion.div
         className="absolute left-0 top-0 w-[2px] bg-[#09A43E] origin-top hidden md:block"
         style={{ height: '100%' }}
-        animate={{ scaleY: active ? 1 : 0, opacity: hovered ? 1 : 0.65 }}
-        transition={{ duration: 1.1, ease: EASE, delay: active ? 0.15 : 0 }}
+        animate={{ scaleY: active ? 1 : 0, opacity: hovered ? 1 : 0.6 }}
+        transition={{ duration: 1.1, ease: EASE }}
       />
 
-      {/* watermark number — green on active, compact on mobile */}
+      {/* number — charges to green */}
       <motion.div
         className="font-archivo font-black leading-none select-none pointer-events-none mb-4 md:mb-6"
         style={{ fontSize: 'clamp(2.5rem,5vw,7rem)', letterSpacing: '-0.05em' }}
         animate={{ color: active ? '#09A43E' : '#e2e1db' }}
-        transition={{ duration: 1.0, ease: EASE }}
+        transition={{ duration: 0.9, ease: EASE }}
       >
         {wm}
       </motion.div>
 
-      {/* title + underline draw */}
+      {/* title + underline draws after number charges */}
       <h3 className="font-archivo font-bold tracking-tight leading-[1.2] text-[0.9rem] md:text-[1.05rem] mb-0 relative">
         {title}
         <motion.span
           className="block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-2 md:mb-3 origin-left"
           animate={{ scaleX: active ? 1 : 0 }}
-          transition={{ duration: 0.85, ease: EASE, delay: active ? 0.2 : 0 }}
+          transition={{ duration: 0.75, ease: EASE, delay: active ? 0.25 : 0 }}
         />
       </h3>
 
       <p className="text-neutral-500 text-[0.9rem] leading-[1.7]">{description}</p>
-    </motion.div>
+    </div>
   )
 }
 
 export function OfferSection() {
-  const topRef = useRef<HTMLDivElement>(null)
-  const [topVisible, setTopVisible] = useState(false)
-  const [ctaVisible, setCtaVisible] = useState(false)
+  const sectionRef   = useRef<HTMLElement>(null)
+  const [topVisible, setTopVisible]     = useState(false)
+  const [activeCount, setActiveCount]   = useState(0)   // 0-4, drives charge
+  const [ctaVisible,  setCtaVisible]    = useState(false)
+  const [hoveredIdx,  setHoveredIdx]    = useState(-1)
 
   useEffect(() => {
-    const el = topRef.current
+    const el = sectionRef.current
     if (!el) return
     const obs = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return
-      setTopVisible(true)
-      setTimeout(() => setCtaVisible(true), 300 + OFFER.items.length * 130 + 400)
       obs.disconnect()
-    }, { threshold: 0.1 })
+
+      // heading
+      setTopVisible(true)
+
+      // sequential charge: 01 → 02 → 03 → 04
+      OFFER.items.forEach((_, i) => {
+        setTimeout(() => setActiveCount(i + 1), 300 + i * CHARGE_INTERVAL)
+      })
+
+      // CTA after all charged
+      setTimeout(
+        () => setCtaVisible(true),
+        300 + OFFER.items.length * CHARGE_INTERVAL + 300
+      )
+    }, { threshold: 0.15 })
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
 
   return (
-    <section id="s-offer" className="py-24 md:py-32 px-8 border-t border-neutral-200">
+    <section ref={sectionRef} id="s-offer" className="py-24 md:py-32 px-8 border-t border-neutral-200">
       <div className="max-w-[1400px] mx-auto">
 
         {/* heading + price */}
-        <div ref={topRef} className="flex items-end justify-between gap-8 flex-wrap pb-10 border-b border-neutral-200">
+        <div className="flex items-end justify-between gap-8 flex-wrap pb-10 border-b border-neutral-200">
           <motion.h2
             className="font-archivo font-black tracking-[-0.05em] leading-[0.88] text-neutral-900 text-5xl md:text-6xl lg:text-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={topVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, ease: EASE }}
+            transition={{ duration: 0.9, ease: EASE }}
           >
             One Pass<br />
             <span className="text-[#09A43E]">Total Global<br />Exposure</span>
@@ -125,7 +117,7 @@ export function OfferSection() {
             className="text-right flex-shrink-0"
             initial={{ opacity: 0, y: 20 }}
             animate={topVisible ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.12, ease: EASE }}
+            transition={{ duration: 0.9, delay: 0.12, ease: EASE }}
           >
             <div
               className="font-archivo font-black text-[#09A43E] leading-none tracking-[-0.05em]"
@@ -139,8 +131,8 @@ export function OfferSection() {
           </motion.div>
         </div>
 
-        {/* 4 editorial columns */}
-        <div className="grid grid-cols-1 md:grid-cols-4">
+        {/* 4 editorial columns — charge sequentially */}
+        <div className="grid grid-cols-2 md:grid-cols-4">
           {OFFER.items.map((item, i) => (
             <OfferCol
               key={item.title}
@@ -148,7 +140,9 @@ export function OfferSection() {
               description={item.description}
               index={i}
               wm={`0${i + 1}`}
-
+              active={i < activeCount}
+              hovered={hoveredIdx === i}
+              onHover={(h) => setHoveredIdx(h ? i : -1)}
             />
           ))}
         </div>
@@ -158,7 +152,7 @@ export function OfferSection() {
           className="border-t border-neutral-200 pt-10 flex justify-center"
           initial={{ opacity: 0, y: 16 }}
           animate={ctaVisible ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: EASE }}
+          transition={{ duration: 0.8, ease: EASE }}
         >
           <Magnetic strength={0.4}>
             <a
