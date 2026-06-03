@@ -136,8 +136,7 @@ export default function V2Minimal() {
         {/* ── ABOUT ── */}
         <section id="s-about" className="pt-10 md:pt-14 pb-24 md:pb-32 px-8">
           <div className="max-w-[1400px] mx-auto">
-            <Reveal><Label>TechCrunch Disrupt</Label></Reveal>
-            <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-end mt-6">
+            <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-end">
               <div className="md:col-span-7">
                 <AnimatedHeading text={'What is\nTechCrunch Disrupt?'} className={hXL} highlight={['Disrupt?']} accentClass="text-[#09A43E]" />
               </div>
@@ -151,8 +150,8 @@ export default function V2Minimal() {
                 </div>
               </Reveal>
             </div>
-            <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-4">
-              {TC_DISRUPT_2025.images.map((img, i) => (<Reveal key={img.src} delay={i * 0.08}><ParallaxImage src={img.src} alt={img.alt} className="h-64 md:h-80 rounded-2xl" amount={30} /></Reveal>))}
+            <div className="mt-14 flex flex-col gap-4">
+              {TC_DISRUPT_2025.images.map((img, i) => (<Reveal key={img.src} delay={i * 0.08}><ParallaxImage src={img.src} alt={img.alt} className="w-full h-72 md:h-[480px] rounded-2xl" amount={30} /></Reveal>))}
             </div>
           </div>
         </section>
