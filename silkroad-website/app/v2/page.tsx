@@ -136,25 +136,23 @@ export default function V2Minimal() {
         {/* ── ABOUT ── */}
         <section id="s-about" className="pt-10 md:pt-14 pb-24 md:pb-32 px-8">
           <div className="max-w-[1400px] mx-auto">
-            <div className="grid md:grid-cols-12 gap-10 items-start">
+            <Reveal><Label>TechCrunch Disrupt</Label></Reveal>
+            <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-end mt-6">
               <div className="md:col-span-7">
                 <AnimatedHeading text={'What is\nTechCrunch Disrupt?'} className={hXL} highlight={['Disrupt?']} accentClass="text-[#09A43E]" />
               </div>
               <Reveal delay={0.1} className="md:col-span-5">
-                <p className="text-xl text-neutral-700 leading-relaxed">{TC_ABOUT.description}</p>
-                <a href="https://techcrunch.com/events/tc-disrupt-2025/" target="_blank" rel="noopener noreferrer"
-                  className="inline-block mt-6 text-[#09A43E] font-medium border-b border-[#09A43E] pb-0.5 hover:text-neutral-900 hover:border-neutral-900 transition-colors">
-                  Learn more →
-                </a>
+                <div className="border-l-2 border-neutral-200 pl-6">
+                  <p className="text-xl text-neutral-600 leading-relaxed">{TC_ABOUT.description}</p>
+                  <a href="https://techcrunch.com/events/techcrunch-disrupt/" target="_blank" rel="noopener noreferrer"
+                    className="inline-block mt-6 text-[#09A43E] font-medium border-b border-[#09A43E] pb-0.5 hover:text-neutral-900 hover:border-neutral-900 transition-colors">
+                    Learn more →
+                  </a>
+                </div>
               </Reveal>
             </div>
-            <div className="mt-12 grid grid-cols-2 md:grid-cols-3 gap-5">{TC_DISRUPT_2025.images.map((img, i) => (<Reveal key={img.src} delay={i * 0.08}><ParallaxImage src={img.src} alt={img.alt} className="h-56 md:h-72 rounded-2xl" amount={30} /></Reveal>))}</div><div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-y-12 gap-x-8">
-              {TC_DISRUPT_2025.stats.map((s, i) => (
-                <Reveal key={s.label} delay={i * 0.07}>
-                  <div className="font-archivo font-black text-4xl md:text-5xl tracking-tight text-neutral-900">{s.value}</div>
-                  <div className="text-sm text-neutral-400 mt-1">{s.label}</div>
-                </Reveal>
-              ))}
+            <div className="mt-14 grid grid-cols-2 md:grid-cols-3 gap-4">
+              {TC_DISRUPT_2025.images.map((img, i) => (<Reveal key={img.src} delay={i * 0.08}><ParallaxImage src={img.src} alt={img.alt} className="h-64 md:h-80 rounded-2xl" amount={30} /></Reveal>))}
             </div>
           </div>
         </section>
