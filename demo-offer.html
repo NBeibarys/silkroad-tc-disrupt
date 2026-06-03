@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Offer Section Demos</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;900&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Archivo', sans-serif; background: #f5f4f0; color: #0a0a0a; }
+
+nav.top {
+  position: sticky; top: 0; z-index: 100;
+  background: #0a0a0a; display: flex; overflow-x: auto;
+}
+nav.top a {
+  padding: 1rem 1.5rem; color: #555; text-decoration: none;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  white-space: nowrap; border-right: 1px solid #1a1a1a;
+  transition: color 0.2s;
+}
+nav.top a:hover { color: #09A43E; }
+
+.tag {
+  display: inline-block; background: #09A43E; color: #fff;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+  text-transform: uppercase; padding: 0.35rem 0.9rem; margin-bottom: 2rem;
+}
+
+/* shared */
+.section { padding: 7rem 2.5rem; border-bottom: 3px solid #09A43E; }
+.mono { font-family: 'IBM Plex Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #09A43E; }
+.heading { font-size: clamp(2.5rem,5vw,5rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.9; }
+.heading .g { color: #09A43E; }
+.price-num { font-size: clamp(3.5rem,7vw,7rem); font-weight: 900; letter-spacing: -0.05em; line-height: 1; color: #09A43E; }
+.cta {
+  display: inline-flex; align-items: center; gap: 0.75rem;
+  padding: 1rem 2.25rem; background: #0a0a0a; color: #fff;
+  font-size: 1rem; font-weight: 600; border-radius: 9999px;
+  text-decoration: none; transition: background 0.2s, transform 0.2s;
+}
+.cta:hover { background: #09A43E; transform: scale(1.03); }
+
+/* ====== A: PRICING CARD ====== */
+#A .inner { max-width: 720px; margin: 0 auto; }
+#A .card {
+  background: #fff; border-radius: 1.5rem; padding: 3.5rem;
+  box-shadow: 0 4px 40px rgba(0,0,0,0.06);
+}
+#A .card-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  flex-wrap: wrap; gap: 1.5rem; margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem; border-bottom: 1px solid #eee;
+}
+#A .price-sub { font-size: 0.85rem; color: #aaa; margin-top: 0.25rem; }
+#A .item-list { display: flex; flex-direction: column; gap: 0; margin-bottom: 2.5rem; }
+#A .item-row {
+  display: flex; align-items: flex-start; gap: 1.25rem;
+  padding: 1.25rem 0; border-bottom: 1px solid #f0f0f0;
+  opacity: 0; transform: translateY(12px);
+  transition: opacity 0.5s, transform 0.5s;
+}
+#A .item-row.in { opacity: 1; transform: none; }
+#A .item-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #09A43E; letter-spacing: 0.1em; min-width: 2rem; padding-top: 2px; }
+#A .item-title { font-size: 1rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.2rem; }
+#A .item-desc { font-size: 0.9rem; color: #6b7280; line-height: 1.55; }
+#A .price-count {
+  display: inline-block;
+  transition: opacity 0.3s;
+}
+
+/* ====== B: SCROLL HORIZONTAL REVEAL ====== */
+#B { padding: 0 2.5rem; }
+#B .b-inner { max-width: 1300px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+#B .b-left { padding: 8rem 0; }
+#B .b-sticky { position: sticky; top: 7rem; }
+#B .b-right { padding: 8rem 0; }
+
+#B .b-item {
+  padding: 3rem 0; border-bottom: 1px solid #e2e1db;
+  display: grid; grid-template-columns: 3rem 1fr; gap: 1.5rem;
+  opacity: 0; transform: translateX(36px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+#B .b-item.in { opacity: 1; transform: none; }
+#B .b-item:first-child { border-top: 1px solid #e2e1db; }
+
+#B .b-item-line {
+  position: absolute; bottom: -1px; left: 0; height: 1px;
+  background: #09A43E; width: 0;
+  transition: width 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+#B .b-item.drawn .b-item-line { width: 100%; }
+#B .b-item { position: relative; }
+
+#B .b-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #09A43E; letter-spacing: 0.1em; padding-top: 3px; }
+#B .b-title { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.5rem; }
+#B .b-desc {
+  font-size: 1rem; color: #6b7280; line-height: 1.65;
+  opacity: 0; transform: translateY(6px);
+  transition: opacity 0.35s 0.4s ease, transform 0.35s 0.4s ease;
+}
+#B .b-item.in .b-desc { opacity: 1; transform: none; }
+
+/* ====== C: ACCORDION ====== */
+#C .c-inner { max-width: 900px; margin: 0 auto; }
+#C .c-top { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem; }
+#C .acc-item {
+  border-top: 1px solid #d4d3cd;
+  overflow: hidden;
+}
+#C .acc-item:last-child { border-bottom: 1px solid #d4d3cd; }
+#C .acc-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.5rem 0; cursor: pointer; user-select: none;
+  gap: 2rem;
+}
+#C .acc-head:hover .acc-title { color: #09A43E; }
+#C .acc-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #09A43E; letter-spacing: 0.1em; min-width: 2.5rem; }
+#C .acc-title { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.03em; flex: 1; transition: color 0.2s; }
+#C .acc-icon {
+  font-size: 1.5rem; font-weight: 300; color: #09A43E;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+  line-height: 1;
+}
+#C .acc-item.open .acc-icon { transform: rotate(45deg); }
+#C .acc-body {
+  display: grid; grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+#C .acc-item.open .acc-body { grid-template-rows: 1fr; }
+#C .acc-inner { overflow: hidden; }
+#C .acc-desc { padding: 0 0 1.75rem 3.5rem; font-size: 1.05rem; color: #6b7280; line-height: 1.7; max-width: 52ch; }
+
+/* ====== D: TILT GRID ====== */
+#D .d-top { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem; }
+#D .d-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; max-width: 1100px; }
+#D .d-card {
+  background: #fff; border-radius: 1.25rem; padding: 2.5rem;
+  position: relative; overflow: hidden;
+  transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), box-shadow 0.4s;
+  transform-style: preserve-3d; cursor: default;
+  opacity: 0; transform: translateY(24px);
+}
+#D .d-card.in { opacity: 1; transform: translateY(0); }
+#D .d-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
+#D .d-card-wm {
+  position: absolute; right: 1.5rem; top: 1rem;
+  font-size: 5rem; font-weight: 900; color: #f0efe9;
+  line-height: 1; letter-spacing: -0.05em; pointer-events: none;
+}
+#D .d-num { font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #09A43E; letter-spacing: 0.1em; margin-bottom: 1rem; }
+#D .d-line { height: 2px; background: #09A43E; width: 2rem; margin-bottom: 1.25rem; border-radius: 1px; }
+#D .d-title { font-size: 1.35rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 0.6rem; position: relative; }
+#D .d-desc { font-size: 0.95rem; color: #6b7280; line-height: 1.65; position: relative; }
+
+@media (max-width: 640px) {
+  #B .b-inner { grid-template-columns: 1fr; }
+  #D .d-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav class="top">
+  <a href="#A">A — Pricing Card</a>
+  <a href="#B">B — Scroll Reveal</a>
+  <a href="#C">C — Accordion</a>
+  <a href="#D">D — Tilt Grid</a>
+</nav>
+
+<!-- ==================== A ==================== -->
+<section class="section" id="A">
+  <span class="tag">Option A — Pricing Card</span>
+  <div class="inner">
+    <div class="card">
+      <div class="card-top">
+        <div>
+          <div class="mono" style="margin-bottom:0.75rem">One pass · Total exposure</div>
+          <div class="heading">Your <span class="g">all-in-one</span><br>pass</div>
+        </div>
+        <div style="text-align:right">
+          <div class="price-num" id="a-price">$0</div>
+          <div class="price-sub">per startup · all inclusive</div>
+        </div>
+      </div>
+
+      <div class="item-list">
+        <div class="item-row">
+          <span class="item-num">01</span>
+          <div><div class="item-title">Dedicated Stand in Pavilion</div><div class="item-desc">Your own branded space in the high-traffic Silkroad Pavilion.</div></div>
+        </div>
+        <div class="item-row">
+          <span class="item-num">02</span>
+          <div><div class="item-title">2 Founder Passes</div><div class="item-desc">Full access for two team members to all of Disrupt's stages and events.</div></div>
+        </div>
+        <div class="item-row">
+          <span class="item-num">03</span>
+          <div><div class="item-title">Startup Alley & Pitch Session</div><div class="item-desc">Exhibit in the main Startup Alley and pitch on our stage to over 400+ viewers.</div></div>
+        </div>
+        <div class="item-row">
+          <span class="item-num">04</span>
+          <div><div class="item-title">On-site Logistical Support</div><div class="item-desc">Our team will be on the ground to help with setup and scheduling.</div></div>
+        </div>
+      </div>
+
+      <a href="#" class="cta">Secure Your Spot →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== B ==================== -->
+<section class="section" id="B">
+  <span class="tag">Option B — Scroll Reveal (on-brand)</span>
+  <div class="b-inner">
+    <div class="b-left">
+      <div class="b-sticky">
+        <div class="mono" style="margin-bottom:1.25rem">One pass</div>
+        <div class="heading">Total<br><span class="g">global<br>exposure</span></div>
+        <div style="margin-top:2rem">
+          <div class="price-num" style="font-size:clamp(3rem,5vw,5rem)">$7,000</div>
+          <div style="font-size:0.85rem;color:#aaa;margin-top:0.35rem">per startup · all inclusive</div>
+        </div>
+        <a href="#" class="cta" style="margin-top:2rem">Secure Your Spot →</a>
+      </div>
+    </div>
+
+    <div class="b-right">
+      <div class="b-item" data-bi="0">
+        <div class="b-item-line"></div>
+        <div class="b-num">01</div>
+        <div>
+          <div class="b-title">Dedicated Stand in Pavilion</div>
+          <div class="b-desc">Your own branded space in the high-traffic Silkroad Pavilion.</div>
+        </div>
+      </div>
+      <div class="b-item" data-bi="1">
+        <div class="b-item-line"></div>
+        <div class="b-num">02</div>
+        <div>
+          <div class="b-title">2 Founder Passes</div>
+          <div class="b-desc">Full access for two team members to all of Disrupt's stages and events.</div>
+        </div>
+      </div>
+      <div class="b-item" data-bi="2">
+        <div class="b-item-line"></div>
+        <div class="b-num">03</div>
+        <div>
+          <div class="b-title">Startup Alley & Pitch Session</div>
+          <div class="b-desc">Exhibit in the main Startup Alley and pitch on our stage to 400+ viewers.</div>
+        </div>
+      </div>
+      <div class="b-item" data-bi="3">
+        <div class="b-item-line"></div>
+        <div class="b-num">04</div>
+        <div>
+          <div class="b-title">On-site Logistical Support</div>
+          <div class="b-desc">Our team on the ground to help with setup and scheduling.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== C ==================== -->
+<section class="section" id="C">
+  <span class="tag">Option C — Accordion</span>
+  <div class="c-inner">
+    <div class="c-top">
+      <div>
+        <div class="heading">One pass<br><span class="g">total exposure</span></div>
+      </div>
+      <div style="text-align:right">
+        <div class="price-num" style="font-size:clamp(3rem,5vw,5rem)">$7,000</div>
+        <div style="font-size:0.85rem;color:#aaa;margin-top:0.35rem">per startup · all inclusive</div>
+        <a href="#" class="cta" style="margin-top:1.5rem">Secure Your Spot →</a>
+      </div>
+    </div>
+
+    <div class="acc-item open">
+      <div class="acc-head">
+        <span class="acc-num">01</span>
+        <span class="acc-title">Dedicated Stand in Pavilion</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body"><div class="acc-inner"><p class="acc-desc">Your own branded space in the high-traffic Silkroad Pavilion — visible to thousands of investors, press, and founders throughout all 3 days.</p></div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head">
+        <span class="acc-num">02</span>
+        <span class="acc-title">2 Founder Passes</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body"><div class="acc-inner"><p class="acc-desc">Full access for two team members to all of Disrupt's stages, roundtables, and networking events across all 3 days.</p></div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head">
+        <span class="acc-num">03</span>
+        <span class="acc-title">Startup Alley & Pitch Session</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body"><div class="acc-inner"><p class="acc-desc">Exhibit in the main Startup Alley and pitch on our dedicated stage to over 400+ viewers — press, investors, and partners in one room.</p></div></div>
+    </div>
+    <div class="acc-item">
+      <div class="acc-head">
+        <span class="acc-num">04</span>
+        <span class="acc-title">On-site Logistical Support</span>
+        <span class="acc-icon">+</span>
+      </div>
+      <div class="acc-body"><div class="acc-inner"><p class="acc-desc">Our team will be on the ground to help with booth setup, scheduling, intro facilitation, and anything you need on the day.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== D ==================== -->
+<section class="section" id="D">
+  <span class="tag">Option D — Tilt Grid</span>
+  <div class="d-top">
+    <div class="heading">One pass<br><span class="g">total exposure</span></div>
+    <div style="text-align:right">
+      <div class="price-num" style="font-size:clamp(3rem,5vw,5rem)">$7,000</div>
+      <div style="font-size:0.85rem;color:#aaa;margin-top:0.35rem">per startup · all inclusive</div>
+      <a href="#" class="cta" style="margin-top:1.5rem">Secure Your Spot →</a>
+    </div>
+  </div>
+  <div class="d-grid">
+    <div class="d-card">
+      <div class="d-card-wm">01</div>
+      <div class="d-num">01</div>
+      <div class="d-line"></div>
+      <div class="d-title">Dedicated Stand in Pavilion</div>
+      <div class="d-desc">Your own branded space in the high-traffic Silkroad Pavilion.</div>
+    </div>
+    <div class="d-card">
+      <div class="d-card-wm">02</div>
+      <div class="d-num">02</div>
+      <div class="d-line"></div>
+      <div class="d-title">2 Founder Passes</div>
+      <div class="d-desc">Full access for two team members to all of Disrupt's stages and events.</div>
+    </div>
+    <div class="d-card">
+      <div class="d-card-wm">03</div>
+      <div class="d-num">03</div>
+      <div class="d-line"></div>
+      <div class="d-title">Startup Alley & Pitch Session</div>
+      <div class="d-desc">Exhibit in Startup Alley and pitch on our stage to 400+ viewers.</div>
+    </div>
+    <div class="d-card">
+      <div class="d-card-wm">04</div>
+      <div class="d-num">04</div>
+      <div class="d-line"></div>
+      <div class="d-title">On-site Logistical Support</div>
+      <div class="d-desc">Our team on the ground to help with setup and scheduling.</div>
+    </div>
+  </div>
+</section>
+
+<div style="height:40vh"></div>
+
+<script>
+// ── A: count-up price
+const priceEl = document.getElementById('a-price')
+let counted = false
+const priceObs = new IntersectionObserver(([e]) => {
+  if (!e.isIntersecting || counted) return
+  counted = true
+  const target = 7000, dur = 1400, t0 = performance.now()
+  const tick = t => {
+    const p = Math.min((t - t0) / dur, 1)
+    const eased = 1 - Math.pow(1 - p, 3)
+    priceEl.textContent = '$' + Math.round(target * eased).toLocaleString()
+    if (p < 1) requestAnimationFrame(tick)
+  }
+  requestAnimationFrame(tick)
+
+  // stagger items
+  document.querySelectorAll('#A .item-row').forEach((el, i) => {
+    setTimeout(() => el.classList.add('in'), 200 + i * 120)
+  })
+}, { threshold: 0.3 })
+priceObs.observe(document.getElementById('A'))
+
+// ── B: slide-in items
+const bItems = document.querySelectorAll('.b-item')
+const bObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return
+    const i = parseInt(e.target.dataset.bi)
+    setTimeout(() => {
+      e.target.classList.add('in')
+      setTimeout(() => e.target.classList.add('drawn'), 500)
+    }, i * 120)
+    bObs.unobserve(e.target)
+  })
+}, { rootMargin: '-60px' })
+bItems.forEach(el => bObs.observe(el))
+
+// ── C: accordion
+document.querySelectorAll('.acc-head').forEach(head => {
+  head.addEventListener('click', () => {
+    const item = head.parentElement
+    const isOpen = item.classList.contains('open')
+    document.querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'))
+    if (!isOpen) item.classList.add('open')
+  })
+})
+
+// ── D: tilt + slide-in
+const dCards = document.querySelectorAll('.d-card')
+const dObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return
+    const i = [...dCards].indexOf(e.target)
+    setTimeout(() => e.target.classList.add('in'), i * 100)
+    dObs.unobserve(e.target)
+  })
+}, { rootMargin: '-40px' })
+dCards.forEach(el => {
+  dObs.observe(el)
+  el.addEventListener('mousemove', e => {
+    const r = el.getBoundingClientRect()
+    const x = (e.clientX - r.left) / r.width - 0.5
+    const y = (e.clientY - r.top) / r.height - 0.5
+    el.style.transform = `perspective(800px) rotateY(${x*10}deg) rotateX(${-y*10}deg) translateY(-4px)`
+  })
+  el.addEventListener('mouseleave', () => {
+    el.style.transform = ''
+  })
+})
+</script>
+</body>
+</html>
