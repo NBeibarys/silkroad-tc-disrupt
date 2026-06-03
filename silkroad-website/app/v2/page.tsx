@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/motion'
 import {
   BRAND, APPLY_URL, APPLY_DEADLINE, CONTACT_EMAIL, CONTACT_TELEGRAM,
-  TC_DISRUPT_2025, OFFER, ADVANTAGES, TESTIMONIALS,
+  TC_DISRUPT_2025, OFFER, TESTIMONIALS,
   SPEAKERS, TEAM, PARTNERS_LOGOS, PARTICIPANTS_IMAGE, FAQ,
   TRACK_RECORD, GALLERY, TC_ABOUT,
 } from '@/lib/data'
@@ -162,7 +162,7 @@ export default function V2Minimal() {
         {/* ── OFFER ── */}
         <section id="s-offer" className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
-            <Label>The Offer</Label>
+
             <div className="grid md:grid-cols-12 gap-10 items-end mb-16">
               <div className="md:col-span-8">
                 <AnimatedHeading text={'One pass\nTotal global exposure'} className={hXL} highlight={['global', 'exposure']} accentClass="text-[#09A43E]" />
