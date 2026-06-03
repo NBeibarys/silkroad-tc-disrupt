@@ -25,7 +25,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
     // desktop overrides
     'md:border-b-0',
     index < 3      ? 'md:border-r md:border-neutral-200' : 'md:border-r-0',
-    index === 0 ? 'md:pl-0 md:pr-8' : '',
+    index === 0 ? 'md:pl-5 md:pr-8' : '',
     index === 3 ? 'md:pl-8 md:pr-0' : '',
     index === 1 || index === 2 ? 'md:px-8' : '',
   ].filter(Boolean).join(' ')
@@ -38,7 +38,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
     >
       {/* vertical line — grows when charged, brighter on hover */}
       <motion.div
-        className="absolute left-0 top-0 w-[2px] bg-[#09A43E] origin-top hidden md:block"
+        className="absolute left-[-1px] top-0 w-[2px] bg-[#09A43E] origin-top hidden md:block"
         style={{ height: '100%' }}
         animate={{ scaleY: active ? 1 : 0, opacity: hovered ? 1 : 0.6 }}
         transition={{ duration: 1.4, ease: EASE }}
@@ -58,7 +58,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
       <h3 className="font-archivo font-bold tracking-tight leading-[1.2] text-[0.9rem] md:text-[1.05rem] mb-0 relative">
         {title}
         <motion.span
-          className="block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-2 md:mb-3 origin-left"
+          className="hidden md:block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-2 md:mb-3 origin-left"
           animate={{ scaleX: active ? 1 : 0 }}
           transition={{ duration: 1.0, ease: EASE, delay: active ? 0.35 : 0 }}
         />
