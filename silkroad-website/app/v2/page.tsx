@@ -5,13 +5,14 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { GalleryCarousel } from '@/components/ui/gallery-carousel'
 import { AdvantageSection } from '@/components/ui/advantage-section'
+import { OfferSection } from '@/components/ui/offer-section'
 import {
   SmoothScroll, ScrollProgress, AnimatedHeading, Reveal,
-  ParallaxImage, Magnetic, Tilt, CountUp,
+  ParallaxImage, Magnetic, CountUp,
 } from '@/components/ui/motion'
 import {
   BRAND, APPLY_URL, APPLY_DEADLINE, CONTACT_EMAIL, CONTACT_TELEGRAM,
-  TC_DISRUPT_2025, OFFER, TESTIMONIALS,
+  TC_DISRUPT_2025, TESTIMONIALS,
   SPEAKERS, TEAM, PARTNERS_LOGOS, PARTICIPANTS_IMAGE, FAQ,
   TRACK_RECORD, GALLERY, TC_ABOUT,
 } from '@/lib/data'
@@ -107,7 +108,7 @@ export default function V2Minimal() {
             <Magnetic strength={0.4}>
               <a href={APPLY_URL} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 text-base font-semibold bg-[#09A43E] text-white px-9 py-4 rounded-md hover:bg-[#077a2e] transition-colors cursor-pointer">
-                Apply Now →
+                Apply Now
               </a>
             </Magnetic>
           </Reveal>
@@ -159,44 +160,7 @@ export default function V2Minimal() {
 
         <AdvantageSection />
 
-        {/* ── OFFER ── */}
-        <section id="s-offer" className="py-24 md:py-32 px-8 border-t border-neutral-200">
-          <div className="max-w-[1400px] mx-auto">
-
-            <div className="grid md:grid-cols-12 gap-10 items-end mb-16">
-              <div className="md:col-span-8">
-                <AnimatedHeading text={'One pass\nTotal global exposure'} className={hXL} highlight={['global', 'exposure']} accentClass="text-[#09A43E]" />
-              </div>
-              <Reveal delay={0.1} className="md:col-span-4 md:text-right">
-                <div className="font-archivo font-black text-7xl md:text-8xl tracking-[-0.04em] text-[#09A43E] leading-none">{OFFER.price}</div>
-                <p className="text-sm text-neutral-400 mt-2">per startup · all inclusive</p>
-              </Reveal>
-            </div>
-            <div className="grid md:grid-cols-2 gap-5">
-              {OFFER.items.map((item, i) => (
-                <Reveal key={item.title} delay={i * 0.06}>
-                  <Tilt max={6}>
-                    <div className="rounded-3xl border border-neutral-200 bg-white p-10 h-full hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.18)] transition-shadow">
-                      <span className="font-mono text-sm text-[#09A43E]">0{i + 1}</span>
-                      <h3 className="text-2xl md:text-3xl font-semibold tracking-tight mt-4 mb-2">{item.title}</h3>
-                      <p className="text-neutral-500 leading-relaxed text-lg">{item.description}</p>
-                    </div>
-                  </Tilt>
-                </Reveal>
-              ))}
-            </div>
-            <Reveal delay={0.2}>
-              <div className="mt-12 text-center">
-                <Magnetic strength={0.4}>
-                  <a href={APPLY_URL} target="_blank" rel="noopener noreferrer"
-                    className="inline-flex items-center gap-3 text-lg font-medium bg-neutral-900 text-white px-10 py-5 rounded-full hover:bg-[#09A43E] transition-colors cursor-pointer">
-                    Secure Your Spot <span>→</span>
-                  </a>
-                </Magnetic>
-              </div>
-            </Reveal>
-          </div>
-        </section>
+        <OfferSection />
 
 
         {/* ── RECORD ── */}
@@ -335,7 +299,7 @@ export default function V2Minimal() {
             <Magnetic strength={0.5}>
               <a href={APPLY_URL} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 text-lg font-medium bg-neutral-900 text-white px-12 py-5 rounded-full hover:bg-[#09A43E] transition-colors cursor-pointer">
-                Apply for the Pavilion <span>→</span>
+                Apply for the Pavilion
               </a>
             </Magnetic>
           </div>
@@ -365,7 +329,7 @@ export default function V2Minimal() {
               <div className="md:flex md:flex-col md:items-end md:justify-between">
                 <a href={APPLY_URL} target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 bg-[#09A43E] text-black font-semibold px-6 py-3 rounded-full text-sm hover:bg-white transition-colors">
-                  Apply Now →
+                  Apply Now
                 </a>
                 <p className="text-white/60 text-xs mt-6 md:mt-0">© 2026 Silkroad Innovation Hub. All rights reserved.</p>
               </div>
