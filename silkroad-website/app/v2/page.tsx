@@ -112,21 +112,21 @@ export default function V2Minimal() {
           </Reveal>
 
           <Reveal delay={0.25} className="w-full max-w-[680px]">
-            <div className="border-t border-b border-neutral-300 grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 divide-neutral-300">
-              <div className="flex flex-col items-center gap-1 px-6 py-5 md:border-r md:border-neutral-300">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Apply before</span>
-                <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-neutral-900 leading-tight">September 15</span>
-                <span className="text-[12.5px] text-[#64748b] font-medium">2026, rolling review</span>
-              </div>
-              <div className="flex flex-col items-center gap-1 px-6 py-5 md:border-r md:border-neutral-300">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Event duration</span>
-                <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-[#09A43E] leading-tight">3 Days</span>
-                <span className="text-[12.5px] text-[#64748b] font-medium">Oct 13, 14, 15 in San Francisco</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
+              <div className="flex flex-col items-center gap-1 px-6 py-5">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Apply before</span>
+                <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-neutral-900 leading-tight">September 15, 2026</span>
+                <span className="text-[14px] text-[#64748b] font-medium">rolling review</span>
               </div>
               <div className="flex flex-col items-center gap-1 px-6 py-5">
-                <span className="text-[12px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Price</span>
+                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Event duration</span>
+                <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-[#09A43E] leading-tight">3 Days</span>
+                <span className="text-[14px] text-[#64748b] font-medium">Oct 13, 14, 15 in San Francisco</span>
+              </div>
+              <div className="flex flex-col items-center gap-1 px-6 py-5">
+                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Price</span>
                 <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-neutral-900 leading-tight">$7,000</span>
-                <span className="text-[12.5px] text-[#64748b] font-medium">per startup, all-inclusive</span>
+                <span className="text-[14px] text-[#64748b] font-medium">per startup, all-inclusive</span>
               </div>
             </div>
           </Reveal>
