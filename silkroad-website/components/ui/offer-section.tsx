@@ -6,7 +6,7 @@ import { OFFER, APPLY_URL } from '@/lib/data'
 import { Magnetic } from './motion'
 
 const EASE     = [0.16, 1, 0.3, 1] as const
-const CHARGE_INTERVAL = 380   // ms between each number charging up
+const CHARGE_INTERVAL = 650   // ms between each number charging up
 
 function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
   title: string; description: string
@@ -37,7 +37,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
         className="absolute left-0 top-0 w-[2px] bg-[#09A43E] origin-top hidden md:block"
         style={{ height: '100%' }}
         animate={{ scaleY: active ? 1 : 0, opacity: hovered ? 1 : 0.6 }}
-        transition={{ duration: 1.1, ease: EASE }}
+        transition={{ duration: 1.4, ease: EASE }}
       />
 
       {/* number — charges to green */}
@@ -45,7 +45,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
         className="font-archivo font-black leading-none select-none pointer-events-none mb-4 md:mb-6"
         style={{ fontSize: 'clamp(2.5rem,5vw,7rem)', letterSpacing: '-0.05em' }}
         animate={{ color: active ? '#09A43E' : '#e2e1db' }}
-        transition={{ duration: 0.9, ease: EASE }}
+        transition={{ duration: 1.3, ease: EASE }}
       >
         {wm}
       </motion.div>
@@ -56,7 +56,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
         <motion.span
           className="block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-2 md:mb-3 origin-left"
           animate={{ scaleX: active ? 1 : 0 }}
-          transition={{ duration: 0.75, ease: EASE, delay: active ? 0.25 : 0 }}
+          transition={{ duration: 1.0, ease: EASE, delay: active ? 0.35 : 0 }}
         />
       </h3>
 
@@ -84,7 +84,7 @@ export function OfferSection() {
 
       // sequential charge: 01 → 02 → 03 → 04
       OFFER.items.forEach((_, i) => {
-        setTimeout(() => setActiveCount(i + 1), 300 + i * CHARGE_INTERVAL)
+        setTimeout(() => setActiveCount(i + 1), 500 + i * CHARGE_INTERVAL)
       })
 
       // CTA after all charged
@@ -92,7 +92,7 @@ export function OfferSection() {
         () => setCtaVisible(true),
         300 + OFFER.items.length * CHARGE_INTERVAL + 300
       )
-    }, { threshold: 0.15 })
+    }, { threshold: 0.3 })
     obs.observe(el)
     return () => obs.disconnect()
   }, [])
