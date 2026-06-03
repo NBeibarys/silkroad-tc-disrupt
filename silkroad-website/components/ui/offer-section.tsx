@@ -38,7 +38,7 @@ function OfferCol({ title, description, index, wm, isLast }: {
       ref={ref}
       initial={{ opacity: 0, y: 24 }}
       animate={visible ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.75, ease: EASE }}
+      transition={{ duration: 1.0, ease: EASE }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={[
@@ -53,12 +53,12 @@ function OfferCol({ title, description, index, wm, isLast }: {
         index > 0 && !isLast ? 'md:px-8' : '',
       ].filter(Boolean).join(' ')}
     >
-      {/* vertical green line — hover only on desktop */}
+      {/* vertical green line — auto on active, extra depth on hover */}
       <motion.div
         className="absolute left-0 top-0 w-[2px] bg-[#09A43E] origin-top hidden md:block"
         style={{ height: '100%' }}
-        animate={{ scaleY: hovered ? 1 : 0 }}
-        transition={{ duration: 0.5, ease: EASE }}
+        animate={{ scaleY: active ? 1 : 0, opacity: hovered ? 1 : 0.65 }}
+        transition={{ duration: 1.1, ease: EASE, delay: active ? 0.15 : 0 }}
       />
 
       {/* watermark number — green on active */}
@@ -66,7 +66,7 @@ function OfferCol({ title, description, index, wm, isLast }: {
         className="font-archivo font-black leading-none select-none pointer-events-none mb-6"
         style={{ fontSize: 'clamp(4rem,6vw,7rem)', letterSpacing: '-0.05em' }}
         animate={{ color: active ? '#09A43E' : '#e2e1db' }}
-        transition={{ duration: 0.7, ease: EASE }}
+        transition={{ duration: 1.0, ease: EASE }}
       >
         {wm}
       </motion.div>
@@ -77,7 +77,7 @@ function OfferCol({ title, description, index, wm, isLast }: {
         <motion.span
           className="block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-3 origin-left"
           animate={{ scaleX: active ? 1 : 0 }}
-          transition={{ duration: 0.6, ease: EASE }}
+          transition={{ duration: 0.85, ease: EASE, delay: active ? 0.2 : 0 }}
         />
       </h3>
 
