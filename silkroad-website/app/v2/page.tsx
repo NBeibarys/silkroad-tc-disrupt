@@ -111,21 +111,21 @@ export default function V2Minimal() {
             </Magnetic>
           </Reveal>
 
-          <Reveal delay={0.25} className="w-full max-w-[680px]">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-10">
-              <div className="flex flex-col items-center gap-1 px-6 py-5">
+          <Reveal delay={0.25} className="w-full max-w-[820px]">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+              <div className="flex flex-col items-center gap-1 px-2 py-5">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Apply before</span>
-                <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-neutral-900 leading-tight">September 15, 2026</span>
+                <span className="font-archivo font-black text-[1.4rem] tracking-[-0.03em] text-neutral-900 leading-tight whitespace-nowrap">September 15, 2026</span>
                 <span className="text-[14px] text-[#64748b] font-medium">rolling review</span>
               </div>
-              <div className="flex flex-col items-center gap-1 px-6 py-5">
+              <div className="flex flex-col items-center gap-1 px-2 py-5">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Event duration</span>
-                <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-[#09A43E] leading-tight">3 Days</span>
+                <span className="font-archivo font-black text-[1.4rem] tracking-[-0.03em] text-[#09A43E] leading-tight whitespace-nowrap">3 Days</span>
                 <span className="text-[14px] text-[#64748b] font-medium">Oct 13, 14, 15 in San Francisco</span>
               </div>
-              <div className="flex flex-col items-center gap-1 px-6 py-5">
+              <div className="flex flex-col items-center gap-1 px-2 py-5">
                 <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Price</span>
-                <span className="font-archivo font-black text-[2rem] tracking-[-0.03em] text-neutral-900 leading-tight">$7,000</span>
+                <span className="font-archivo font-black text-[1.4rem] tracking-[-0.03em] text-neutral-900 leading-tight whitespace-nowrap">$7,000</span>
                 <span className="text-[14px] text-[#64748b] font-medium">per startup, all-inclusive</span>
               </div>
             </div>
