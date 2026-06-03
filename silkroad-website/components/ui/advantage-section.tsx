@@ -2,8 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion'
-import { ADVANTAGES, APPLY_URL } from '@/lib/data'
-import { Magnetic } from './motion'
+import { ADVANTAGES } from '@/lib/data'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
@@ -100,23 +99,10 @@ export function AdvantageSection() {
         {/* LEFT sticky */}
         <div className="py-24 md:py-32">
           <div className="md:sticky md:top-28">
-            <h2
-              className="font-archivo font-black tracking-[-0.05em] leading-[0.88] text-neutral-900"
-              style={{ fontSize: 'clamp(2.8rem,8vw,7rem)' }}
-            >
+            <h2 className="font-archivo font-black tracking-[-0.05em] leading-[0.88] text-neutral-900 text-5xl md:text-6xl lg:text-7xl">
               Gain your<br />
               <span className="text-[#09A43E]">unfair<br />advantage</span>
             </h2>
-            <Magnetic strength={0.4}>
-              <a
-                href={APPLY_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex mt-10 items-center gap-3 text-lg font-medium bg-neutral-900 text-white px-9 py-4 rounded-full hover:bg-[#09A43E] transition-colors cursor-pointer"
-              >
-                Apply Now <span>→</span>
-              </a>
-            </Magnetic>
           </div>
         </div>
 
