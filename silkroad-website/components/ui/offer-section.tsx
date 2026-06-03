@@ -7,9 +7,9 @@ import { Magnetic } from './motion'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
-function OfferCol({ title, description, index, wm, isLast }: {
+function OfferCol({ title, description, index, wm }: {
   title: string; description: string
-  index: number; wm: string; isLast: boolean
+  index: number; wm: string
 }) {
   const ref   = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -42,15 +42,16 @@ function OfferCol({ title, description, index, wm, isLast }: {
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className={[
-        'relative py-10 px-6',
-        // mobile: bottom border between items
-        !isLast ? 'border-b border-neutral-200' : '',
-        // desktop: right border, override mobile border, adjust padding
-        'md:border-b-0 md:py-12',
-        !isLast ? 'md:border-r md:border-neutral-200' : '',
+        'relative px-4 py-6 md:py-12',
+        // mobile 2x2: right border on col 0 and 2, bottom border on row 0
+        index % 2 === 0 ? 'border-r border-neutral-200' : '',
+        index < 2 ? 'border-b border-neutral-200' : '',
+        // desktop overrides
+        'md:border-b-0',
+        index === 3 ? 'md:border-r-0' : 'md:border-r md:border-neutral-200',
         index === 0 ? 'md:pl-0 md:pr-8' : '',
-        isLast  ? 'md:pl-8 md:pr-0' : '',
-        index > 0 && !isLast ? 'md:px-8' : '',
+        index === 3 ? 'md:pl-8 md:pr-0' : '',
+        index === 1 || index === 2 ? 'md:px-8' : '',
       ].filter(Boolean).join(' ')}
     >
       {/* vertical green line — auto on active, extra depth on hover */}
@@ -61,10 +62,10 @@ function OfferCol({ title, description, index, wm, isLast }: {
         transition={{ duration: 1.1, ease: EASE, delay: active ? 0.15 : 0 }}
       />
 
-      {/* watermark number — green on active */}
+      {/* watermark number — green on active, compact on mobile */}
       <motion.div
-        className="font-archivo font-black leading-none select-none pointer-events-none mb-6"
-        style={{ fontSize: 'clamp(4rem,6vw,7rem)', letterSpacing: '-0.05em' }}
+        className="font-archivo font-black leading-none select-none pointer-events-none mb-4 md:mb-6"
+        style={{ fontSize: 'clamp(2.5rem,5vw,7rem)', letterSpacing: '-0.05em' }}
         animate={{ color: active ? '#09A43E' : '#e2e1db' }}
         transition={{ duration: 1.0, ease: EASE }}
       >
@@ -72,10 +73,10 @@ function OfferCol({ title, description, index, wm, isLast }: {
       </motion.div>
 
       {/* title + underline draw */}
-      <h3 className="font-archivo font-bold tracking-tight leading-[1.2] text-[1.05rem] mb-0 relative">
+      <h3 className="font-archivo font-bold tracking-tight leading-[1.2] text-[0.9rem] md:text-[1.05rem] mb-0 relative">
         {title}
         <motion.span
-          className="block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-3 origin-left"
+          className="block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-2 md:mb-3 origin-left"
           animate={{ scaleX: active ? 1 : 0 }}
           transition={{ duration: 0.85, ease: EASE, delay: active ? 0.2 : 0 }}
         />
@@ -147,7 +148,7 @@ export function OfferSection() {
               description={item.description}
               index={i}
               wm={`0${i + 1}`}
-              isLast={i === OFFER.items.length - 1}
+
             />
           ))}
         </div>
