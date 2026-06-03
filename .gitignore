@@ -1,0 +1,18 @@
+# Build outputs
+silkroad-website/.next/
+silkroad-website/out/
+silkroad-website/node_modules/
+silkroad-website/.vercel/
+silkroad-website/tsconfig.tsbuildinfo
+
+# Env
+silkroad-website/.env*
+
+# Tooling
+graphify-out/
+.claude/
+*.log
+
+# Docs / misc
+*.pdf
+CLAUDE.md
