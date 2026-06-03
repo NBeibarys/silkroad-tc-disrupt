@@ -7,61 +7,77 @@ import { Magnetic } from './motion'
 
 const EASE = [0.16, 1, 0.3, 1] as const
 
-function OfferCol({ title, description, index, wm }: {
-  title: string; description: string; index: number; wm: string
+function OfferCol({ title, description, index, wm, isLast }: {
+  title: string; description: string
+  index: number; wm: string; isLast: boolean
 }) {
-  const ref = useRef<HTMLDivElement>(null)
+  const ref   = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
+  const [active,  setActive]  = useState(false)
   const [hovered, setHovered] = useState(false)
 
   useEffect(() => {
     const el = ref.current
     if (!el) return
-    const obs = new IntersectionObserver(([e]) => {
+
+    // slide-in + auto-activate on entry — staggered, works on both PC and mobile
+    const entryObs = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return
-      setTimeout(() => setVisible(true), index * 110)
-      obs.disconnect()
-    }, { rootMargin: '-60px' })
-    obs.observe(el)
-    return () => obs.disconnect()
+      const delay = index * 130
+      setTimeout(() => setVisible(true), delay)
+      setTimeout(() => setActive(true), delay + 180)
+      entryObs.disconnect()
+    }, { rootMargin: '-40px' })
+
+    entryObs.observe(el)
+    return () => entryObs.disconnect()
   }, [index])
 
   return (
     <motion.div
       ref={ref}
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 0, y: 24 }}
       animate={visible ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.75, ease: EASE }}
-      className="relative py-10 pr-8 pl-0 border-r border-neutral-200 last:border-r-0 last:pr-0 last:pl-8 [&:not(:first-child):not(:last-child)]:px-8"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      className={[
+        'relative py-10 px-6',
+        // mobile: bottom border between items
+        !isLast ? 'border-b border-neutral-200' : '',
+        // desktop: right border, override mobile border, adjust padding
+        'md:border-b-0 md:py-12',
+        !isLast ? 'md:border-r md:border-neutral-200' : '',
+        index === 0 ? 'md:pl-0 md:pr-8' : '',
+        isLast  ? 'md:pl-8 md:pr-0' : '',
+        index > 0 && !isLast ? 'md:px-8' : '',
+      ].filter(Boolean).join(' ')}
     >
-      {/* vertical green line on left edge */}
+      {/* vertical green line — hover only on desktop */}
       <motion.div
-        className="absolute left-0 top-0 w-[2px] bg-[#09A43E] origin-top"
+        className="absolute left-0 top-0 w-[2px] bg-[#09A43E] origin-top hidden md:block"
         style={{ height: '100%' }}
         animate={{ scaleY: hovered ? 1 : 0 }}
-        transition={{ duration: 0.55, ease: EASE }}
+        transition={{ duration: 0.5, ease: EASE }}
       />
 
-      {/* watermark number */}
+      {/* watermark number — green on active */}
       <motion.div
         className="font-archivo font-black leading-none select-none pointer-events-none mb-6"
         style={{ fontSize: 'clamp(4rem,6vw,7rem)', letterSpacing: '-0.05em' }}
-        animate={{ color: hovered ? '#b8f0cc' : '#e2e1db' }}
-        transition={{ duration: 0.5, ease: EASE }}
+        animate={{ color: active ? '#09A43E' : '#e2e1db' }}
+        transition={{ duration: 0.7, ease: EASE }}
       >
         {wm}
       </motion.div>
 
-      {/* title */}
+      {/* title + underline draw */}
       <h3 className="font-archivo font-bold tracking-tight leading-[1.2] text-[1.05rem] mb-0 relative">
         {title}
-        {/* underline draw */}
         <motion.span
           className="block h-[2px] bg-[#09A43E] rounded-full mt-[0.4rem] mb-3 origin-left"
-          animate={{ scaleX: hovered ? 1 : 0 }}
-          transition={{ duration: 0.5, ease: EASE }}
+          animate={{ scaleX: active ? 1 : 0 }}
+          transition={{ duration: 0.6, ease: EASE }}
         />
       </h3>
 
@@ -71,17 +87,17 @@ function OfferCol({ title, description, index, wm }: {
 }
 
 export function OfferSection() {
-  const headingRef = useRef<HTMLDivElement>(null)
+  const topRef = useRef<HTMLDivElement>(null)
   const [topVisible, setTopVisible] = useState(false)
   const [ctaVisible, setCtaVisible] = useState(false)
 
   useEffect(() => {
-    const el = headingRef.current
+    const el = topRef.current
     if (!el) return
     const obs = new IntersectionObserver(([e]) => {
       if (!e.isIntersecting) return
       setTopVisible(true)
-      setTimeout(() => setCtaVisible(true), 600 + OFFER.items.length * 110)
+      setTimeout(() => setCtaVisible(true), 300 + OFFER.items.length * 130 + 400)
       obs.disconnect()
     }, { threshold: 0.1 })
     obs.observe(el)
@@ -92,16 +108,16 @@ export function OfferSection() {
     <section id="s-offer" className="py-24 md:py-32 px-8 border-t border-neutral-200">
       <div className="max-w-[1400px] mx-auto">
 
-        {/* top: heading + price */}
-        <div ref={headingRef} className="flex items-end justify-between gap-8 flex-wrap pb-12 border-b border-neutral-200 mb-0">
+        {/* heading + price */}
+        <div ref={topRef} className="flex items-end justify-between gap-8 flex-wrap pb-10 border-b border-neutral-200">
           <motion.h2
             className="font-archivo font-black tracking-[-0.05em] leading-[0.88] text-neutral-900 text-5xl md:text-6xl lg:text-7xl"
             initial={{ opacity: 0, y: 20 }}
             animate={topVisible ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            One Pass.<br />
-            <span className="text-[#09A43E]">Total Global<br />Exposure.</span>
+            One Pass<br />
+            <span className="text-[#09A43E]">Total Global<br />Exposure</span>
           </motion.h2>
 
           <motion.div
@@ -131,6 +147,7 @@ export function OfferSection() {
               description={item.description}
               index={i}
               wm={`0${i + 1}`}
+              isLast={i === OFFER.items.length - 1}
             />
           ))}
         </div>
