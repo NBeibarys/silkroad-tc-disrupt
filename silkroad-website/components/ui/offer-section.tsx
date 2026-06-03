@@ -16,9 +16,13 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
   onHover: (h: boolean) => void
 }) {
   const borderClasses = [
-    'relative px-4 py-6 md:py-12',
+    'relative px-4 py-6 flex flex-col justify-start',
+    // mobile: equal min-height for uniform squares
+    'min-h-[150px] md:min-h-0 md:py-12',
+    // mobile 2x2 borders
     index % 2 === 0 ? 'border-r border-neutral-200' : '',
     index < 2      ? 'border-b border-neutral-200' : '',
+    // desktop overrides
     'md:border-b-0',
     index < 3      ? 'md:border-r md:border-neutral-200' : 'md:border-r-0',
     index === 0 ? 'md:pl-0 md:pr-8' : '',
@@ -60,7 +64,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
         />
       </h3>
 
-      <p className="text-neutral-500 text-[0.9rem] leading-[1.7]">{description}</p>
+      <p className="hidden md:block text-neutral-500 text-[0.9rem] leading-[1.7]">{description}</p>
     </div>
   )
 }
