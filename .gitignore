@@ -16,3 +16,7 @@ graphify-out/
 # Docs / misc
 *.pdf
 CLAUDE.md
+
+# Demo files — local only
+demo-*.html
+*.html
