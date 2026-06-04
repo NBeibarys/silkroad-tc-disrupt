@@ -2,8 +2,8 @@
 
 import { useRef, useEffect, useState, useMemo, type ReactNode, type ElementType } from 'react'
 import {
-  motion, useScroll, useTransform, useSpring, useMotionValue,
-  useReducedMotion, useAnimationFrame, type MotionValue,
+  motion, useScroll, useTransform, useSpring,
+  useReducedMotion, type MotionValue,
 } from 'framer-motion'
 import Image from 'next/image'
 import { cn } from '@/lib/utils'
@@ -14,29 +14,6 @@ const EASE = [0.22, 1, 0.36, 1] as const
    SMOOTH SCROLL — Lenis provider. Wrap each page root.
    ──────────────────────────────────────────────────────────── */
 export function SmoothScroll({ children }: { children: ReactNode }) {
-  const reduce = useReducedMotion()
-  const lenisRef = useRef<{ raf: (t: number) => void; destroy: () => void } | null>(null)
-
-  // Drive Lenis through framer-motion's RAF so both share the same tick order
-  useAnimationFrame((time) => {
-    lenisRef.current?.raf(time)
-  })
-
-  useEffect(() => {
-    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
-    if (reduce || isTouch) return
-    let active = true
-    import('lenis').then(({ default: Lenis }) => {
-      if (!active) return
-      lenisRef.current = new Lenis({ lerp: 0.12, smoothWheel: true })
-    })
-    return () => {
-      active = false
-      lenisRef.current?.destroy()
-      lenisRef.current = null
-    }
-  }, [reduce])
-
   return <>{children}</>
 }
 
