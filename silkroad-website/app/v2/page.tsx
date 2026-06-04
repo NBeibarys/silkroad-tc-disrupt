@@ -323,32 +323,32 @@ export default function V2Minimal() {
         </section>
 
         {/* ── FOOTER ── */}
-        <footer className="bg-neutral-950 py-16 px-8">
+        <footer className="bg-neutral-950 py-16 px-4 md:px-8">
           <div className="max-w-[1400px] mx-auto">
-            <div className="grid md:grid-cols-3 gap-10 pb-12 border-b border-white/10">
-              <div>
+            <div className="grid md:grid-cols-3 gap-8 pb-12 border-b border-white/10">
+              <div className="min-w-0">
                 <Image src={BRAND.logo} alt="Silkroad" width={140} height={48} className="h-10 w-auto object-contain mb-5 brightness-0 invert" unoptimized />
-                <p className="text-white/70 text-sm leading-relaxed">{BRAND.tagline}</p>
+                <p className="text-white/70 text-sm leading-relaxed break-words">{BRAND.tagline}</p>
               </div>
-              <div>
-                <div className="block w-full border border-white/10 rounded-2xl p-6 space-y-4 hover:border-[#09A43E]/40 transition-colors">
-                  <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-white/95 hover:text-[#09A43E] transition-colors text-sm group">
-                    <span className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-xs group-hover:border-[#09A43E] transition-colors">@</span>
-                    {CONTACT_EMAIL}
+              <div className="min-w-0">
+                <div className="border border-white/10 rounded-2xl p-5 space-y-4 hover:border-[#09A43E]/40 transition-colors">
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-start gap-3 text-white/95 hover:text-[#09A43E] transition-colors text-sm group min-w-0">
+                    <span className="w-8 h-8 flex-shrink-0 rounded-full border border-white/20 flex items-center justify-center text-xs group-hover:border-[#09A43E] transition-colors">@</span>
+                    <span className="break-all min-w-0">{CONTACT_EMAIL}</span>
                   </a>
                   <a href={CONTACT_TELEGRAM} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-white/95 hover:text-[#09A43E] transition-colors text-sm group">
-                    <span className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-xs group-hover:border-[#09A43E] transition-colors">tg</span>
+                    <span className="w-8 h-8 flex-shrink-0 rounded-full border border-white/20 flex items-center justify-center text-xs group-hover:border-[#09A43E] transition-colors">tg</span>
                     Telegram
                   </a>
-                  <p className="text-white/55 text-xs pl-11">{BRAND.address}</p>
+                  <p className="text-white/55 text-xs pl-11 break-words">{BRAND.address}</p>
                 </div>
               </div>
-              <div className="md:flex md:flex-col md:items-end md:justify-between">
+              <div className="flex flex-col gap-4 md:items-end md:justify-between">
                 <a href={APPLY_URL} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 bg-[#09A43E] text-black font-semibold px-6 py-3 rounded-full text-sm hover:bg-white transition-colors">
+                  className="inline-flex items-center gap-2 bg-[#09A43E] text-black font-semibold px-6 py-3 rounded-full text-sm hover:bg-white transition-colors self-start md:self-auto">
                   Apply Now
                 </a>
-                <p className="text-white/60 text-xs mt-6 md:mt-0">© 2026 Silkroad Innovation Hub. All rights reserved.</p>
+                <p className="text-white/60 text-xs">© 2026 Silkroad Innovation Hub. All rights reserved.</p>
               </div>
             </div>
           </div>
