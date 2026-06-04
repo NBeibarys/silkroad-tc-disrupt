@@ -233,7 +233,7 @@ export default function V2Minimal() {
                   <p className="text-sm text-[#09A43E] font-medium mb-4">{m.role}</p>
                   <div className="grid grid-cols-2 gap-x-3 gap-y-3">
                     {m.logos.map((logo) => (
-                      <img key={logo.alt} src={logo.url} alt={logo.alt} className="h-10 w-full max-w-[120px] object-contain object-left" />
+                      <img key={logo.alt} src={logo.url} alt={logo.alt} className="h-16 w-full max-w-[140px] object-contain object-left" />
                     ))}
                   </div>
                 </Reveal>

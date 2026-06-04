@@ -292,7 +292,7 @@ export const TEAM = [
     role: 'Operations Manager',
     photo: 'https://utfs.io/f/5lAbzPMR2hDE4WRPFbNLGxklWuSdTiD0OA84eVhJR6gqs7Qn',
     logos: [
-      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtKScj0mipEBcrZQTHhOWaKPz80u5g1kUtXy9j', alt: 'University of South Florida' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtXJdpUkKEVkTJdDnFGhuWMIZ15fseLA8gKoHU', alt: 'University of South Florida' },
       { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjt089RuCxMJqUeDsNWzInBitwFg3vaOlRPjfkx', alt: 'Monic.ai' },
       { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtUr9LgLXVFDvIMiK3gntTcj9A6OfEzSQpuHZl', alt: 'Silkroad' },
     ],
@@ -301,7 +301,14 @@ export const TEAM = [
     name: 'Nilufar Majidova',
     role: 'Operations Manager',
     photo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtNb7tZwWuqPXpKzHOb8xgY3EVrNylsWefTJCi',
-    logos: [],
+    logos: [
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtXJdpUkKEVkTJdDnFGhuWMIZ15fseLA8gKoHU', alt: 'University of South Florida' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtjb5gRIchbIedYjTzVOuRF4PArSosW9aMKqk1', alt: 'Aster' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtJH7rRMm6HvT5JUIs79AlV2qpSfNutazLoGPe', alt: 'NASA' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtRQr6lTwiuqMQXdYygCzhUkVOJe65S3PEwHRf', alt: 'USC' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjt2K4LwK0PaqzQOjSTVUfCZENb549RGJYDKxMp', alt: 'Moss' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtmuOzQlfEC2qAQeoV0ILNxUzRKSFOsfDPnrwi', alt: 'West' },
+    ],
   },
 ]
 
