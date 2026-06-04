@@ -210,7 +210,10 @@ export default function V2Minimal() {
         {/* ── GALLERY ── */}
         <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
-            <Label>From the Floor</Label>
+            <Reveal>
+              <h2 className="font-archivo font-black text-3xl md:text-4xl tracking-tight text-center mb-3">See the Action</h2>
+              <p className="text-neutral-500 text-center mb-10 text-lg">Experience the energy of the pavilion and the conference floor.</p>
+            </Reveal>
             <Reveal><GalleryCarousel slides={GALLERY} heightClass="h-[340px] md:h-[640px]" className="!rounded-3xl" /></Reveal>
           </div>
         </section>
