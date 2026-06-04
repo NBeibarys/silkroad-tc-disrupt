@@ -249,7 +249,7 @@ export default function V2Minimal() {
         {/* ── PARTNERS ── */}
         <section id="s-partners" className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
-            <Label>Our Partners in 2025</Label>
+            <Label>Our Partners in 2026</Label>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-4">
               {PARTNERS_LOGOS.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.07}>
@@ -309,7 +309,6 @@ export default function V2Minimal() {
         {/* ── FAQ ── */}
         <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1000px] mx-auto">
-            <Label>Questions</Label>
             <AnimatedHeading text={'Frequently asked'} className={`${hXL} mb-12`} highlight={['asked']} accentClass="text-[#09A43E]" />
             <Faq />
           </div>

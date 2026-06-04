@@ -309,9 +309,9 @@ export const TEAM = [
       { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtXJdpUkKEVkTJdDnFGhuWMIZ15fseLA8gKoHU', alt: 'University of South Florida', href: 'https://www.usf.edu' },
       { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtjb5gRIchbIedYjTzVOuRF4PArSosW9aMKqk1', alt: 'Aster', href: '#' },
       { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtJH7rRMm6HvT5JUIs79AlV2qpSfNutazLoGPe', alt: 'NASA', href: 'https://www.nasa.gov' },
-      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtRQr6lTwiuqMQXdYygCzhUkVOJe65S3PEwHRf', alt: 'USC', href: 'https://www.usc.edu' },
-      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjt2K4LwK0PaqzQOjSTVUfCZENb549RGJYDKxMp', alt: 'Moss', href: '#' },
-      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtmuOzQlfEC2qAQeoV0ILNxUzRKSFOsfDPnrwi', alt: 'West', href: '#' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtRQr6lTwiuqMQXdYygCzhUkVOJe65S3PEwHRf', alt: 'USC', href: 'https://bullsconnect.usf.edu/uzsc/home/' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjt2K4LwK0PaqzQOjSTVUfCZENb549RGJYDKxMp', alt: 'Moss', href: 'https://moss.com/' },
+      { url: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtmuOzQlfEC2qAQeoV0ILNxUzRKSFOsfDPnrwi', alt: 'West', href: 'https://www.wa.edu/' },
     ],
   },
 ]
