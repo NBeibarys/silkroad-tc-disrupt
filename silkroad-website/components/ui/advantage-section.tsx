@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
-import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import { ADVANTAGES } from '@/lib/data'
 
 const EASE = [0.16, 1, 0.3, 1] as const
@@ -88,7 +88,7 @@ function AdvantageItem({
 
       {/* watermark */}
       <motion.span
-        className="absolute right-0 top-1/2 -translate-y-1/2 font-archivo font-black leading-none select-none pointer-events-none"
+        className="absolute right-0 top-1/2 -translate-y-1/2 font-inter font-black leading-none select-none pointer-events-none"
         style={{ fontSize: 'clamp(5rem,9vw,9rem)', letterSpacing: '-0.05em' }}
         animate={{ color: active ? '#d0f2dc' : '#eae9e2' }}
         transition={{ duration: 0.8, ease: EASE }}
@@ -107,7 +107,7 @@ function AdvantageItem({
 
       {/* title */}
       <h3
-        className="font-archivo font-bold tracking-tight leading-[1.1] relative"
+        className="font-inter font-bold tracking-tight leading-[1.1] relative"
         style={{ fontSize: 'clamp(1.6rem,3vw,2.2rem)', letterSpacing: '-0.03em' }}
       >
         {title}
@@ -159,13 +159,6 @@ export function AdvantageSection() {
     setActiveIdx(prev => prev === idx ? -1 : prev)
   }, [])
 
-  // scroll progress bar
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ['start start', 'end end'],
-  })
-  const springY = useSpring(scrollYProgress, { stiffness: 100, damping: 28, mass: 0.4 })
-  const scaleY  = useTransform(springY, [0, 1], [0, 1])
 
   const counterLabel = activeIdx >= 0
     ? `${String(activeIdx + 1).padStart(2, '0')} / ${String(ADVANTAGES.length).padStart(2, '0')}`
@@ -175,7 +168,8 @@ export function AdvantageSection() {
     <section ref={sectionRef} className="px-8 relative">
       {/* green progress bar */}
       <div className="absolute left-0 top-0 w-[3px] h-full bg-neutral-200">
-        <motion.div className="w-full bg-[#09A43E] origin-top" style={{ scaleY, height: '100%' }} />
+        <div className="w-full bg-[#09A43E] origin-top transition-all duration-500 ease-out"
+          style={{ height: `${Math.max(0, (activeIdx + 1) / ADVANTAGES.length * 100)}%` }} />
       </div>
 
       <div className="max-w-[1300px] mx-auto grid md:grid-cols-2 gap-16 md:gap-24">
@@ -202,7 +196,7 @@ export function AdvantageSection() {
 
             {/* heading */}
             <motion.h2
-              className="font-archivo font-black tracking-[-0.05em] leading-[0.88] text-neutral-900 text-5xl md:text-6xl lg:text-7xl"
+              className="font-inter font-black tracking-[-0.05em] leading-[0.88] text-neutral-900 text-5xl md:text-6xl lg:text-7xl"
               animate={{ scale: headingScale }}
               transition={{ duration: 1, ease: EASE }}
               style={{ transformOrigin: 'left top' }}
