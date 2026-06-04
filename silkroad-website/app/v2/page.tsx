@@ -29,7 +29,7 @@ const hXL = 'font-archivo font-black tracking-[-0.045em] leading-[0.92] text-[cl
 function Label({ children }: { children: React.ReactNode }) {
   return (
     <Reveal>
-      <p className="text-sm font-semibold uppercase tracking-[0.18em] text-[#09A43E] mb-5">{children}</p>
+      <p className="text-base font-black uppercase tracking-[0.12em] text-neutral-900 mb-5">{children}</p>
     </Reveal>
   )
 }
@@ -224,17 +224,18 @@ export default function V2Minimal() {
         {/* ── TEAM ── */}
         <section id="s-team" className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
-            <Label>The Team</Label>
-            <AnimatedHeading text={'The team behind the pavilion'} className={`${hXL} mb-14`} highlight={['pavilion']} accentClass="text-[#09A43E]" />
+            <AnimatedHeading text={'Silkroad Innovation Hub Team'} className={`${hXL} mb-14`} highlight={['Team']} accentClass="text-[#09A43E]" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
               {TEAM.map((m, i) => (
                 <Reveal key={m.name} delay={i * 0.06}>
                   <ParallaxImage src={m.photo} alt={m.name} className="aspect-[4/5] rounded-2xl mb-4" amount={30} />
-                  <h3 className="text-lg font-semibold tracking-tight">{m.name}</h3>
-                  <p className="text-sm text-[#09A43E] mb-3">{m.role}</p>
-                  {m.credentials.slice(0, 3).map((c) => (
-                    <p key={c} className="text-xs text-neutral-400">{c}</p>
-                  ))}
+                  <h3 className="text-base font-black uppercase tracking-[0.04em] leading-tight mb-1">{m.name}</h3>
+                  <p className="text-sm text-[#09A43E] font-medium mb-4">{m.role}</p>
+                  <div className="grid grid-cols-2 gap-x-3 gap-y-3">
+                    {m.logos.map((logo) => (
+                      <img key={logo.alt} src={logo.url} alt={logo.alt} className="h-10 w-full max-w-[120px] object-contain object-left" />
+                    ))}
+                  </div>
                 </Reveal>
               ))}
             </div>
