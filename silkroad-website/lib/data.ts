@@ -179,28 +179,45 @@ export const ADVANTAGES = [
 
 export const TESTIMONIALS = [
   {
-    quote: 'It was a great opportunity to introduce our product to the US market and to find valuable connections for further development.',
-    name: 'Nurali Sarbakysh',
-    company: 'TrustExam',
-    photo: 'https://utfs.io/f/5lAbzPMR2hDElSw4NoIgs2k8H4n6bZAKdexXuTECwihprfQJ',
+    quote: '"TechCrunch is proud to partner with Silkroad Innovation Hub for the third consecutive year. Their impressive delegation of Central Asian startups continues to bring fresh innovation and strengthen global connections at Disrupt. We deeply value this collaboration and look forward to many more years together."',
+    name: 'Michael Schick',
+    company: 'TechCrunch Disrupt',
   },
   {
-    quote: 'My favorite part of TechCrunch Disrupt 2024 was experiencing the energy, innovative ideas, and motivation of global startup founders—truly inspiring as a first-timer!',
-    name: 'Shavkat Khomidov',
-    company: 'Datagaze',
-    photo: 'https://media.licdn.com/dms/image/v2/D4E03AQEfco66x9JUcQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1697617434474?e=1758758400&v=beta&t=ES7m-TIGgEGhGCz0zvbC9qZ2Ir9ZJMUGtvLQ8dH6hCQ',
-  },
-  {
-    quote: 'Delighted that the team and startups had a great time! We always enjoy having the SilkRoad Innovation Hub at Disrupt.',
+    quote: '"Silkroad Pavilion is one of our most valued partners at Disrupt. Their startups are consistently well received by our 9,000+ attendees, highlighting the strength of the Central Eurasian ecosystem. We look forward to a great 2026 together!"',
     name: 'Sherie Spence',
     company: 'TechCrunch Disrupt',
-    photo: 'https://media.licdn.com/dms/image/v2/D5603AQELZi0oeEpP7A/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1726362694421?e=1758758400&v=beta&t=ctSo_HFN93uhAFH_W5R6ql-lcgtC7laq3X6eyFX9xC8',
+    photo: 'https://media.licdn.com/dms/image/v2/D5603AQELZi0oeEpP7A/profile-displayphoto-shrink_800_800/0/1726362694421?e=1758758400&v=beta&t=ctSo_HFN93uhAFH_W5R6ql-lcgtC7laq3X6eyFX9xC8',
   },
   {
-    quote: 'Participating in the Silkroad Pavilion was a fantastic experience. It was the perfect entry into the global tech scene.',
-    name: 'Ardak Akhmetova',
-    company: 'Global Grand University',
-    photo: 'https://media.licdn.com/dms/image/v2/D4D03AQHzPpZgduTT3g/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1715797035386?e=1758758400&v=beta&t=lp1xAP5-rZUqc4Nq1QtofABRNSET_Fs0Ip8JLSgivN8',
+    quote: '"We generated over 300 contacts and already set up calls with several investors. The organization was solid and made it easy to focus on building meaningful connections."',
+    name: 'Aira Mongush',
+    company: 'Algebras AI',
+  },
+  {
+    quote: '"TechCrunch Disrupt proved incredibly productive for us - we pitched to 20 investors, scheduled 40 follow-up calls, and forged 10 new partnerships."',
+    name: 'Valeriy Bushuev',
+    company: 'Business Robots AI',
+  },
+  {
+    quote: '"We had a great experience at TechCrunch. Over three days, we spoke with 100+ founders - driving a strong sales pipeline for our team and generating exceptional return on investment."',
+    name: 'Aryan Pareek',
+    company: 'Alma',
+  },
+  {
+    quote: '"TechCrunch Disrupt was intense, inspiring, and game-changing. Every moment offered a chance for new partnerships, investments, or insights."',
+    name: 'Yevgeniya Yussupova',
+    company: 'NIET Foundation',
+  },
+  {
+    quote: '"Thank you for your work, it is greatly appreciated! I was able to recruit 10 mentors from Ivy League schools for Topcoach!"',
+    name: 'Orzugul Umarova',
+    company: 'Topcoach',
+  },
+  {
+    quote: '"We discussed with 2-3 VCs, secured a potential demo with a client, and made several valuable partner connections. The Silkroad team\'s support made all the difference."',
+    name: 'Sanzhar Myrzagalym',
+    company: 'Defect AI',
   },
 ]
 

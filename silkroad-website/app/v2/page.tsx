@@ -6,13 +6,14 @@ import { motion } from 'framer-motion'
 import { GalleryCarousel } from '@/components/ui/gallery-carousel'
 import { AdvantageSection } from '@/components/ui/advantage-section'
 import { OfferSection } from '@/components/ui/offer-section'
+import { TestimonialsSection } from '@/components/ui/testimonials-section'
 import {
   SmoothScroll, ScrollProgress, AnimatedHeading, Reveal,
   ParallaxImage, Magnetic, CountUp,
 } from '@/components/ui/motion'
 import {
   BRAND, APPLY_URL, APPLY_DEADLINE, CONTACT_EMAIL, CONTACT_TELEGRAM,
-  TC_DISRUPT_2025, TESTIMONIALS,
+  TC_DISRUPT_2025,
   SPEAKERS, TEAM, PARTNERS_LOGOS, PARTICIPANTS_IMAGE, FAQ,
   TRACK_RECORD, GALLERY, TC_ABOUT,
 } from '@/lib/data'
@@ -218,28 +219,7 @@ export default function V2Minimal() {
           </div>
         </section>
 
-        {/* ── TESTIMONIALS ── */}
-        <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
-          <div className="max-w-[1400px] mx-auto">
-            <Label>Voices</Label>
-            <div className="grid md:grid-cols-2 gap-x-16 gap-y-14">
-              {TESTIMONIALS.map((t, i) => (
-                <Reveal key={t.name} delay={(i % 2) * 0.1} blur>
-                  <blockquote>
-                    <p className="text-2xl md:text-3xl font-medium tracking-tight leading-snug mb-7">“{t.quote}”</p>
-                    <footer className="flex items-center gap-4">
-                      <Image src={t.photo} alt={t.name} width={48} height={48} className="w-12 h-12 rounded-full object-cover" unoptimized />
-                      <div>
-                        <div className="font-semibold">{t.name}</div>
-                        <div className="text-sm text-neutral-400">{t.company}</div>
-                      </div>
-                    </footer>
-                  </blockquote>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
+        <TestimonialsSection />
 
         {/* ── SPEAKERS ── */}
         <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
