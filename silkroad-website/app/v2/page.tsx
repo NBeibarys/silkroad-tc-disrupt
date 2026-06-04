@@ -166,15 +166,30 @@ export default function V2Minimal() {
         {/* ── RECORD ── */}
         <section id="s-record" className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
-            <Label>Track Record</Label>
-            <AnimatedHeading text={'A proven record at Disrupt'} className={`${hXL} mb-16`} highlight={['Disrupt']} accentClass="text-[#09A43E]" />
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6">
+            <Reveal className="pb-16 border-b border-neutral-200 mb-0">
+              <AnimatedHeading text={'A proven record\nat Disrupt'} className={`${hXL} mb-5`} highlight={['Disrupt']} accentClass="text-[#09A43E]" />
+              <p className="text-lg text-neutral-500 font-medium max-w-[52ch]">We have a history of bringing the biggest and best cohorts to the conference.</p>
+            </Reveal>
+            <div className="grid grid-cols-2 md:grid-cols-5">
               {TRACK_RECORD.map((s, i) => (
-                <Reveal key={s.label} delay={i * 0.08}>
-                  <div className="font-archivo font-black text-6xl md:text-7xl tracking-[-0.04em] text-neutral-900 leading-none mb-3">
-                    {'value' in s ? <CountUp value={s.value as number} /> : s.display}
+                <Reveal key={s.label} delay={i * 0.1}>
+                  <div className={[
+                    'group relative py-10 pr-6',
+                    i === 0 ? 'pl-0' : 'pl-6',
+                    i < TRACK_RECORD.length - 1 ? 'border-r border-neutral-200' : '',
+                    'max-md:border-r-0 max-md:border-b max-md:border-neutral-200 max-md:px-0',
+                  ].join(' ')}>
+                    <div className="font-archivo font-black tracking-[-0.05em] leading-none mb-3 text-neutral-900 group-hover:text-[#09A43E] transition-colors duration-500"
+                      style={{ fontSize: 'clamp(2.5rem,4.5vw,5rem)' }}>
+                      {'value' in s
+                        ? <CountUp value={s.value as number} />
+                        : s.display === 'the Largest'
+                          ? <><span className="text-neutral-900 group-hover:text-[#09A43E] transition-colors">the </span><span className="text-[#09A43E]">Largest</span></>
+                          : s.display}
+                    </div>
+                    <span className="block h-[2px] bg-[#09A43E] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out mb-3 rounded-full" />
+                    <p className="text-[1rem] text-neutral-500 font-medium leading-snug">{s.label}</p>
                   </div>
-                  <p className="text-sm text-neutral-400">{s.label}</p>
                 </Reveal>
               ))}
             </div>
