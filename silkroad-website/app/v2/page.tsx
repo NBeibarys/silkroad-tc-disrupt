@@ -24,7 +24,7 @@ import {
    Palette: paper #FAFAF8 · ink #0a0a0a · hairline #E5E5E2 · accent green.
    ============================================================ */
 
-const hXL = 'font-archivo font-black tracking-[-0.045em] leading-[0.92] text-[clamp(2.6rem,7vw,6rem)]'
+const hXL = 'font-inter font-black uppercase tracking-[0.02em] leading-[0.95] text-[clamp(2.2rem,5.5vw,5rem)]'
 
 function Label({ children }: { children: React.ReactNode }) {
   return (
