@@ -218,7 +218,7 @@ export default function V2Minimal() {
         <section id="s-team" className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
             <AnimatedHeading text={'Silkroad Innovation Hub Team'} className={`${hXL} mb-14`} highlight={['Team']} accentClass="text-[#09A43E]" />
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
               {TEAM.map((m, i) => (
                 <Reveal key={m.name} delay={i * 0.06}>
                   <ParallaxImage src={m.photo} alt={m.name} className="aspect-[4/5] rounded-2xl mb-4" amount={30} />
