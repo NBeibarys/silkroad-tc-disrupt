@@ -35,12 +35,12 @@ function Faq() {
         <div key={i} className="border-b border-neutral-200">
           <button onClick={() => setOpen(open === i ? null : i)}
             className="w-full flex justify-between items-center gap-6 py-7 text-left cursor-pointer group">
-            <span className="text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900 group-hover:text-[#09A43E] transition-colors">{item.q}</span>
-            <span className={`text-3xl text-[#374151] transition-transform duration-300 ${open === i ? 'rotate-45 text-[#09A43E]' : ''}`}>+</span>
+            <span className="text-lg md:text-2xl font-semibold tracking-tight text-neutral-900 group-hover:text-[#09A43E] transition-colors">{item.q}</span>
+            <span className={`text-2xl flex-shrink-0 text-[#374151] transition-transform duration-300 ${open === i ? 'rotate-45 text-[#09A43E]' : ''}`}>+</span>
           </button>
           <motion.div initial={false} animate={{ height: open === i ? 'auto' : 0, opacity: open === i ? 1 : 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden">
-            <p className="pb-7 -mt-2 max-w-2xl text-[#374151] text-lg leading-relaxed">{item.a}</p>
+            <p className="pb-7 max-w-2xl text-[#374151] text-base leading-relaxed">{item.a}</p>
           </motion.div>
         </div>
       ))}
@@ -247,11 +247,11 @@ export default function V2Minimal() {
               {PARTNERS_LOGOS.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.07}>
                   <a href={p.url} target="_blank" rel="noopener noreferrer"
-                    className="group flex items-center justify-center border border-neutral-200 rounded-2xl bg-white p-8 md:p-10 h-36 hover:border-[#09A43E] hover:shadow-[0_8px_32px_-8px_rgba(9,164,62,0.18)] transition-all">
+                    className="group flex items-center justify-center py-4 opacity-70 hover:opacity-100 transition-opacity">
                     {p.logo ? (
-                      <Image src={p.logo} alt={p.name} width={160} height={64} className="max-h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300" unoptimized />
+                      <Image src={p.logo} alt={p.name} width={160} height={56} className="max-h-12 w-auto object-contain" unoptimized />
                     ) : (
-                      <span className="text-sm font-semibold text-[#374151] group-hover:text-neutral-900 transition-colors text-center">{p.name}</span>
+                      <span className="text-sm font-semibold text-[#374151]">{p.name}</span>
                     )}
                   </a>
                 </Reveal>
@@ -330,7 +330,7 @@ export default function V2Minimal() {
                 <p className="text-white/70 text-sm leading-relaxed">{BRAND.tagline}</p>
               </div>
               <div>
-                <div className="inline-block border border-white/10 rounded-2xl p-6 space-y-4 hover:border-[#09A43E]/40 transition-colors">
+                <div className="block w-full border border-white/10 rounded-2xl p-6 space-y-4 hover:border-[#09A43E]/40 transition-colors">
                   <a href={`mailto:${CONTACT_EMAIL}`} className="flex items-center gap-3 text-white/95 hover:text-[#09A43E] transition-colors text-sm group">
                     <span className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-xs group-hover:border-[#09A43E] transition-colors">@</span>
                     {CONTACT_EMAIL}
