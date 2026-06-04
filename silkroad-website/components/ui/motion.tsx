@@ -14,15 +14,6 @@ const EASE = [0.22, 1, 0.36, 1] as const
    SMOOTH SCROLL — Lenis provider. Wrap each page root.
    ──────────────────────────────────────────────────────────── */
 export function SmoothScroll({ children }: { children: ReactNode }) {
-  useEffect(() => {
-    const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches
-    if (isTouch) return
-    let lenis: { destroy: () => void } | null = null
-    import('lenis').then(({ default: Lenis }) => {
-      lenis = new Lenis({ lerp: 0.1, smoothWheel: true, autoRaf: true } as ConstructorParameters<typeof Lenis>[0])
-    })
-    return () => { lenis?.destroy() }
-  }, [])
   return <>{children}</>
 }
 
