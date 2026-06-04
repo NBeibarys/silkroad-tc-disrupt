@@ -247,7 +247,8 @@ export default function V2Minimal() {
               {PARTNERS_LOGOS.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.07}>
                   <a href={p.url} target="_blank" rel="noopener noreferrer"
-                    className="group flex items-center justify-center py-4 opacity-70 hover:opacity-100 transition-opacity">
+                    className="flex items-center justify-center rounded-2xl p-6 transition-all duration-300"
+                    style={{ boxShadow: '0 0 24px 4px rgba(9,164,62,0.12), 0 2px 12px rgba(9,164,62,0.08)' }}>
                     {p.logo ? (
                       <Image src={p.logo} alt={p.name} width={160} height={56} className="max-h-12 w-auto object-contain" unoptimized />
                     ) : (
