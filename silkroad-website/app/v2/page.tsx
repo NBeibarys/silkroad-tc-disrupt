@@ -73,7 +73,7 @@ export default function V2Minimal() {
               </a>
             </div>
             <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[#374151]">
-              {[['About Disrupt', '#s-about'], ['The Offer', '#s-offer'], ['Previous Participants', '#s-participants'], ['Our Record', '#s-record'], ['Partners', '#s-partners'], ['Team', '#s-team']].map(([l, h]) => (
+              {[['About Disrupt', '#s-about'], ['The Offer', '#s-offer'], ['Our Record', '#s-record'], ['Previous Participants', '#s-participants'], ['Partners', '#s-partners'], ['Team', '#s-team']].map(([l, h]) => (
                 <a key={l} href={h} className="hover:text-[#09A43E] transition-colors whitespace-nowrap">{l}</a>
               ))}
             </nav>
@@ -189,9 +189,8 @@ export default function V2Minimal() {
             </div>
             <Reveal delay={0.1}>
               <div id="s-participants" className="mt-16">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="font-archivo font-black text-2xl md:text-3xl tracking-tight">Disrupt 2025 Startups</h3>
-                  <span className="text-sm font-semibold text-[#09A43E] border border-[#09A43E] rounded-full px-4 py-1.5">20 companies · 4 countries</span>
+                <div className="mb-8">
+                  <h3 className="font-inter font-black uppercase tracking-[0.02em] text-2xl md:text-3xl">Previous Participants</h3>
                 </div>
                 <div className="rounded-3xl border border-neutral-200 bg-white overflow-hidden">
                   <Image src={PARTICIPANTS_IMAGE} alt="Disrupt 2025 Startup Alumni" width={1600} height={800} className="w-full h-auto" unoptimized />
