@@ -224,17 +224,38 @@ export default function V2Minimal() {
         {/* ── SPEAKERS ── */}
         <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
-            <Label>On Stage</Label>
-            <AnimatedHeading text={'Featured speakers.'} className={`${hXL} mb-14`} highlight={['speakers.']} accentClass="text-[#09A43E]" />
-            <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
+            <h2 className={`${hXL} mb-3`}>Featured Speakers</h2>
+            <p className="text-lg text-[#374151] mb-14">Learn from brightest minds in tech.</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {SPEAKERS.map((s, i) => (
-                <Reveal key={s.name} delay={i * 0.06}>
-                  <ParallaxImage src={s.photo} alt={s.name} className="aspect-square rounded-2xl mb-4" amount={20} />
-                  <h3 className="font-semibold tracking-tight">{s.name}</h3>
-                  <p className="text-sm text-[#09A43E]">{s.company}</p>
-                  <p className="text-xs text-neutral-400">{s.role}</p>
+                <Reveal key={s.name} delay={i * 0.08}>
+                  <div className="relative w-full h-0 pb-[100%] rounded-2xl overflow-hidden mb-4">
+                    <img
+                      src={s.photo} alt={s.name} loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 hover:scale-[1.04]"
+                      style={{ objectPosition: s.photoPos ?? 'center 15%' }}
+                    />
+                  </div>
+                  <div className="min-h-[6rem]">
+                    <h3 className="font-bold text-[1rem] tracking-tight text-neutral-900 mb-1 leading-tight">{s.name}</h3>
+                    <p className="text-[0.88rem] font-semibold text-[#09A43E] mb-1">{s.company}</p>
+                    <p className="text-[0.78rem] text-neutral-400 leading-snug">{s.role}</p>
+                  </div>
+                  <a href={s.companyUrl} target="_blank" rel="noopener noreferrer" className="block mt-1 transition-opacity hover:opacity-65">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img src={s.logo} alt={s.company} className="h-9 w-auto" loading="lazy" />
+                  </a>
                 </Reveal>
               ))}
+            </div>
+            <div className="mt-14 pt-12 border-t border-neutral-200 flex justify-center">
+              <a
+                href="https://techcrunch.com/events/techcrunch-disrupt/speakers/"
+                target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center bg-neutral-900 text-white px-11 py-5 rounded-full text-base font-semibold hover:bg-[#09A43E] transition-colors"
+              >
+                See full speakers list
+              </a>
             </div>
           </div>
         </section>

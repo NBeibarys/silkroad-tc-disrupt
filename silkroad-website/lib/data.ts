@@ -222,11 +222,43 @@ export const TESTIMONIALS = [
 ]
 
 export const SPEAKERS = [
-  { name: 'Eric Yuan', role: 'Founder & CEO', company: 'Zoom', photo: 'https://techcrunch.com/wp-content/uploads/2025/08/Eric-headshot-e1754676514767.jpg?w=300' },
-  { name: 'Eunice Kim', role: 'CPO', company: 'Netflix', photo: 'https://techcrunch.com/wp-content/uploads/2025/06/Eunice-Kim-e1750867240234.jpg?w=300' },
-  { name: 'Tekedra Mawakana', role: 'Co-CEO', company: 'Waymo', photo: 'https://techcrunch.com/wp-content/uploads/2024/05/B7BE1E60-4FE5-44F0-B147-104146598172-1.jpeg?w=300' },
-  { name: 'Erik Allebest', role: 'CEO', company: 'Chess.com', photo: 'https://techcrunch.com/wp-content/uploads/2025/05/Erik-Allebest_Credit-Personal-Archive.jpg?w=300' },
-  { name: 'Jaspar Carmichael-Jack', role: 'Co-Founder & CEO', company: 'Artisan', photo: 'https://techcrunch.com/wp-content/uploads/2025/08/JasparA-2-e1754503045933.jpg?w=300' },
+  {
+    name: 'Jeff Lawson', role: 'Co-founder and CEO', company: 'Inertia',
+    companyUrl: 'https://inertia.com',
+    logo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtP8GGXN8l8NOrJg4uLdRDAZFUBQT3pHS1CoaE',
+    photo: 'https://techcrunch.com/wp-content/uploads/2014/11/Jeff_Color-1000-e1778078607521.jpeg?w=300',
+  },
+  {
+    name: 'Arvind Jain', role: 'Founder & CEO', company: 'Glean',
+    companyUrl: 'https://glean.com',
+    logo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjt9JhJRJyUGsjtgDlYE35ui2qJw07AhVxQWoe4',
+    photo: 'https://techcrunch.com/wp-content/uploads/2026/05/Arvind-Jain-Glean.jpeg?w=300',
+  },
+  {
+    name: 'Arsalan Tavakoli-Shiraji', role: 'Co-founder and SVP of Field Engineering', company: 'Databricks',
+    companyUrl: 'https://databricks.com',
+    logo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtNTNKtXWuqPXpKzHOb8xgY3EVrNylsWefTJCi',
+    photo: 'https://techcrunch.com/wp-content/uploads/2026/04/headshot-arsalan-tavakoli-e1777576150816.jpg?w=300',
+    photoPos: 'center 5%',
+  },
+  {
+    name: 'Winston Weinberg', role: 'Co-founder & CEO', company: 'Harvey',
+    companyUrl: 'https://harvey.ai',
+    logo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjt4ShEVONZtPdpGWwlSzBqcxf31ykhY6nbDAui',
+    photo: 'https://techcrunch.com/wp-content/uploads/2026/04/IMG_4213.jpg?w=300',
+  },
+  {
+    name: 'Aklil Ibssa', role: 'Head of Corporate Development and M&A', company: 'Coinbase',
+    companyUrl: 'https://coinbase.com',
+    logo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtdzVYw0LERzVFYGdiHKTxW6cr1DInZJLo3SkO',
+    photo: 'https://techcrunch.com/wp-content/uploads/2025/07/1740378936164.jpeg?w=300',
+  },
+  {
+    name: 'Josh Reeves', role: 'CEO and Co-founder', company: 'Gusto',
+    companyUrl: 'https://gusto.com',
+    logo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjt04BC3GxMJqUeDsNWzInBitwFg3vaOlRPjfkx',
+    photo: 'https://techcrunch.com/wp-content/uploads/2024/07/Josh-Reeves-Headshot-e1720278457896.jpg?w=300',
+  },
 ]
 
 export const TEAM = [
