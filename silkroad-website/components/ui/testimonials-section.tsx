@@ -24,24 +24,11 @@ function ini(n: string) { return n.split(' ').map(x => x[0]).join('').slice(0, 2
 interface CardProps {
   quote: string; name: string; company: string; photo?: string
   index: number; dark?: boolean; color?: string
-  mx: number; my: number; revealed: boolean
+  mx: number; my: number; revealed: boolean; tick: number
 }
 
-function FloatCard({ quote, name, company, photo, index, dark, color = '#09A43E', mx, my, revealed }: CardProps) {
+function FloatCard({ quote, name, company, photo, index, dark, color = '#09A43E', mx, my, revealed, tick }: CardProps) {
   const [l, tp, depth, phase, amp] = LAYOUT[index]
-  const [tick, setTick] = useState(0)
-  const rafRef = useRef<number | null>(null)
-
-  useEffect(() => {
-    let start: number
-    const loop = (ts: number) => {
-      if (!start) start = ts
-      setTick(ts)
-      rafRef.current = requestAnimationFrame(loop)
-    }
-    rafRef.current = requestAnimationFrame(loop)
-    return () => { if (rafRef.current !== null) cancelAnimationFrame(rafRef.current) }
-  }, [])
 
   const t = tick * 0.001
   const d = depth * 300
@@ -85,20 +72,31 @@ function FloatCard({ quote, name, company, photo, index, dark, color = '#09A43E'
 export function TestimonialsSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [revealed, setRevealed] = useState(false)
-  const [mx, setMx] = useState(0)
-  const [my, setMy] = useState(0)
+  const [inView, setInView] = useState(false)
+  const [tick, setTick] = useState(0)
+  const mxRef = useRef(0)
+  const myRef = useRef(0)
 
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setRevealed(true); obs.disconnect() }
-    }, { threshold: 0.1 })
+      setInView(e.isIntersecting)
+      if (e.isIntersecting) setRevealed(true)
+    }, { threshold: 0.05 })
     if (sectionRef.current) obs.observe(sectionRef.current)
     return () => obs.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!inView) return
+    let id: number
+    const loop = (ts: number) => { setTick(ts); id = requestAnimationFrame(loop) }
+    id = requestAnimationFrame(loop)
+    return () => cancelAnimationFrame(id)
+  }, [inView])
+
   const onMouseMove = useCallback((e: React.MouseEvent) => {
-    setMx((e.clientX / window.innerWidth - 0.5) * 2)
-    setMy((e.clientY / window.innerHeight - 0.5) * 2)
+    mxRef.current = (e.clientX / window.innerWidth - 0.5) * 2
+    myRef.current = (e.clientY / window.innerHeight - 0.5) * 2
   }, [])
 
   const COLORS = ['#09A43E','#09A43E','#7C3AED','#2563EB','#DC2626','#D97706','#059669','#7C3AED']
@@ -139,9 +137,10 @@ export function TestimonialsSection() {
             index={i}
             dark={i === 0}
             color={COLORS[i]}
-            mx={mx}
-            my={my}
+            mx={mxRef.current}
+            my={myRef.current}
             revealed={revealed}
+            tick={tick}
           />
         ))}
       </div>

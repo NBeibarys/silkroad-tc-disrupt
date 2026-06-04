@@ -177,53 +177,15 @@ export function Parallax({ children, amount = 60, className }: { children: React
 /* ────────────────────────────────────────────────────────────
    MAGNETIC — element pulls toward cursor; for CTA buttons.
    ──────────────────────────────────────────────────────────── */
-export function Magnetic({ children, className, strength = 0.35 }: { children: ReactNode; className?: string; strength?: number }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const reduce = useReducedMotion()
-  const mx = useMotionValue(0)
-  const my = useMotionValue(0)
-  const x = useSpring(mx, { stiffness: 250, damping: 18 })
-  const y = useSpring(my, { stiffness: 250, damping: 18 })
-  function move(e: React.MouseEvent) {
-    if (reduce || !ref.current) return
-    const r = ref.current.getBoundingClientRect()
-    mx.set((e.clientX - (r.left + r.width / 2)) * strength)
-    my.set((e.clientY - (r.top + r.height / 2)) * strength)
-  }
-  function leave() { mx.set(0); my.set(0) }
-  return (
-    <motion.div ref={ref} onMouseMove={move} onMouseLeave={leave} style={{ x, y }} className={cn('inline-block', className)}>
-      {children}
-    </motion.div>
-  )
+export function Magnetic({ children, className }: { children: ReactNode; className?: string; strength?: number }) {
+  return <div className={cn('inline-block', className)}>{children}</div>
 }
 
 /* ────────────────────────────────────────────────────────────
    TILT CARD — 3D tilt toward cursor with sheen.
    ──────────────────────────────────────────────────────────── */
-export function Tilt({ children, className, max = 8 }: { children: ReactNode; className?: string; max?: number }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const reduce = useReducedMotion()
-  const rx = useSpring(useMotionValue(0), { stiffness: 200, damping: 16 })
-  const ry = useSpring(useMotionValue(0), { stiffness: 200, damping: 16 })
-  function move(e: React.MouseEvent) {
-    if (reduce || !ref.current) return
-    const r = ref.current.getBoundingClientRect()
-    const px = (e.clientX - r.left) / r.width - 0.5
-    const py = (e.clientY - r.top) / r.height - 0.5
-    ry.set(px * max)
-    rx.set(-py * max)
-  }
-  function leave() { rx.set(0); ry.set(0) }
-  return (
-    <motion.div
-      ref={ref} onMouseMove={move} onMouseLeave={leave}
-      style={{ rotateX: rx, rotateY: ry, transformStyle: 'preserve-3d' }}
-      className={cn('[perspective:900px]', className)}
-    >
-      {children}
-    </motion.div>
-  )
+export function Tilt({ children, className }: { children: ReactNode; className?: string; max?: number }) {
+  return <div className={className}>{children}</div>
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -267,43 +229,7 @@ export function CountUp({ value, className }: { value: number; className?: strin
 /* ────────────────────────────────────────────────────────────
    CUSTOM CURSOR — green dot, expands on hover, desktop only.
    ──────────────────────────────────────────────────────────── */
-export function CustomCursor() {
-  const x = useMotionValue(-100)
-  const y = useMotionValue(-100)
-  const sx = useSpring(x, { stiffness: 400, damping: 28 })
-  const sy = useSpring(y, { stiffness: 400, damping: 28 })
-  const scale = useMotionValue(1)
-  const ss = useSpring(scale, { stiffness: 300, damping: 20 })
-  const reduce = useReducedMotion()
-
-  useEffect(() => {
-    if (reduce) return
-    const move = (e: MouseEvent) => { x.set(e.clientX); y.set(e.clientY) }
-    const enter = (e: MouseEvent) => {
-      const t = e.target as Element
-      if (t.closest('a,button,[role="button"]')) scale.set(2.8)
-    }
-    const leave = () => scale.set(1)
-    window.addEventListener('mousemove', move)
-    window.addEventListener('mouseover', enter)
-    window.addEventListener('mouseout', leave)
-    return () => {
-      window.removeEventListener('mousemove', move)
-      window.removeEventListener('mouseover', enter)
-      window.removeEventListener('mouseout', leave)
-    }
-  }, [x, y, scale, reduce])
-
-  if (reduce) return null
-  return (
-    <motion.div
-      className="fixed top-0 left-0 z-[9999] pointer-events-none hidden md:block"
-      style={{ x: sx, y: sy, translateX: '-50%', translateY: '-50%', willChange: 'transform' }}
-    >
-      <motion.div className="w-4 h-4 rounded-full bg-[#09A43E]" style={{ scale: ss }} />
-    </motion.div>
-  )
-}
+export function CustomCursor() { return null }
 
 /* ────────────────────────────────────────────────────────────
    HORIZONTAL SCROLL GALLERY — scroll-driven horizontal drift.
