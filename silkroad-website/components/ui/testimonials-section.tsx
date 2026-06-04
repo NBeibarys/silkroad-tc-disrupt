@@ -1,40 +1,54 @@
 'use client'
 
-import Image from 'next/image'
 import { TESTIMONIALS } from '@/lib/data'
 import { Reveal } from './motion'
 
-function QuoteCard({ quote, name, company, photo, dark }: {
-  quote: string; name: string; company: string; photo?: string; dark?: boolean
+function QuoteCard({ quote, name, company, dark }: {
+  quote: string; name: string; company: string; dark?: boolean
 }) {
   const initials = name.split(' ').map(x => x[0]).join('').slice(0, 2)
   return (
     <div className={[
-      'flex-shrink-0 w-[300px] rounded-2xl p-5 select-none',
-      dark ? 'bg-neutral-950 text-white' : 'bg-white text-neutral-900 border border-neutral-100',
+      'flex-shrink-0 w-[320px] rounded-xl p-6 whitespace-normal select-none',
+      dark
+        ? 'bg-neutral-950 border border-neutral-800'
+        : 'bg-white border border-neutral-200',
     ].join(' ')}>
-      <div className="text-2xl leading-none mb-2 font-serif text-[#09A43E]">"</div>
-      <p className={['text-[0.76rem] leading-[1.65] mb-4', dark ? 'text-white/75' : 'text-[#374151]'].join(' ')}>
+      <div className="w-6 h-[2px] bg-[#09A43E] mb-4" />
+      <p className={['text-sm leading-relaxed mb-5', dark ? 'text-white/70' : 'text-[#374151]'].join(' ')}>
         {quote.replace(/^"|"$/g, '')}
       </p>
-      <div className="flex items-center gap-2">
-        {photo
-          ? <Image src={photo} alt={name} width={28} height={28} className="w-7 h-7 rounded-full object-cover flex-shrink-0" unoptimized />
-          : <div className="w-7 h-7 rounded-full flex-shrink-0 flex items-center justify-center text-[0.6rem] font-bold text-white bg-[#09A43E]">{initials}</div>
-        }
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-[0.65rem] font-black text-white bg-[#09A43E]">
+          {initials}
+        </div>
         <div>
-          <div className={['font-bold text-[0.75rem]', dark ? 'text-white' : 'text-neutral-900'].join(' ')}>{name}</div>
-          <div className="text-[0.65rem] text-[#09A43E] tracking-wide">{company}</div>
+          <p className={['text-xs font-bold', dark ? 'text-white' : 'text-neutral-900'].join(' ')}>{name}</p>
+          <p className="text-[11px] text-[#09A43E] tracking-wide">{company}</p>
         </div>
       </div>
     </div>
   )
 }
 
-export function TestimonialsSection() {
-  const row1 = [...TESTIMONIALS.slice(0, 4), ...TESTIMONIALS.slice(0, 4)]
-  const row2 = [...TESTIMONIALS.slice(4), ...TESTIMONIALS.slice(4)]
+function MarqueeRow({ items, reverse, darkPattern }: {
+  items: typeof TESTIMONIALS; reverse?: boolean; darkPattern: (i: number) => boolean
+}) {
+  const doubled = [...items, ...items]
+  return (
+    <div className="flex gap-4" style={{
+      animation: `${reverse ? 'marquee-reverse' : 'marquee'} ${items.length * 8}s linear infinite`,
+      willChange: 'transform',
+      width: 'max-content',
+    }}>
+      {doubled.map((t, i) => (
+        <QuoteCard key={i} quote={t.quote} name={t.name} company={t.company} dark={darkPattern(i % items.length)} />
+      ))}
+    </div>
+  )
+}
 
+export function TestimonialsSection() {
   return (
     <section className="py-24 md:py-32 border-t border-neutral-200 overflow-hidden">
       <div className="max-w-[1400px] mx-auto px-8 mb-14">
@@ -44,18 +58,9 @@ export function TestimonialsSection() {
           </h2>
         </Reveal>
       </div>
-
       <div className="space-y-4">
-        <div className="flex gap-4 animate-marquee whitespace-nowrap">
-          {row1.map((t, i) => (
-            <QuoteCard key={i} {...t} dark={i % 4 === 0 || i % 4 === 3} />
-          ))}
-        </div>
-        <div className="flex gap-4 animate-marquee-reverse whitespace-nowrap">
-          {row2.map((t, i) => (
-            <QuoteCard key={i} {...t} dark={i % 4 === 1} />
-          ))}
-        </div>
+        <MarqueeRow items={TESTIMONIALS.slice(0, 4)} darkPattern={i => i === 0 || i === 3} />
+        <MarqueeRow items={TESTIMONIALS.slice(4)} reverse darkPattern={i => i === 1} />
       </div>
     </section>
   )

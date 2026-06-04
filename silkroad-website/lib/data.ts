@@ -12,7 +12,7 @@ export const BRAND = {
   est: 2023,
   website: 'silkroadinnovationhub.com',
   eventWebsite: 'silkroadtcdisrupt.com',
-  location: 'Menlo Park, CA — 5-minute bike from Stanford University & Sand Hill Road',
+  location: 'Menlo Park, CA, 5-minute bike from Stanford University & Sand Hill Road',
   locationNote: 'Building was the first office of Robinhood and Pear VC',
   address: '724 Oak Grove Ave, Menlo Park, CA 94025',
   green: '#09A43E',
@@ -41,7 +41,7 @@ export const PROGRAMS = [
   {
     number: '03',
     title: 'Events & Activities',
-    description: 'Organizing events including the first tech conference — Central Eurasia @ Silicon Valley 2024.',
+    description: 'Organizing events including the first tech conference, Central Eurasia @ Silicon Valley 2024.',
   },
   {
     number: '04',
