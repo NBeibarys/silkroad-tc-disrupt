@@ -26,13 +26,6 @@ import {
 
 const hXL = 'font-inter font-black uppercase tracking-[0.02em] leading-[0.95] text-[clamp(2.2rem,5.5vw,5rem)]'
 
-function Label({ children }: { children: React.ReactNode }) {
-  return (
-    <Reveal>
-      <p className="text-base font-black uppercase tracking-[0.12em] text-neutral-900 mb-5">{children}</p>
-    </Reveal>
-  )
-}
 
 function Faq() {
   const [open, setOpen] = useState<number | null>(0)
@@ -249,7 +242,7 @@ export default function V2Minimal() {
         {/* ── PARTNERS ── */}
         <section id="s-partners" className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
-            <Label>Our Partners in 2026</Label>
+            <AnimatedHeading text={'Our Partners in 2026'} className={`${hXL} mb-10`} highlight={['Partners']} accentClass="text-[#09A43E]" />
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5 mt-4">
               {PARTNERS_LOGOS.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.07}>
@@ -306,14 +299,6 @@ export default function V2Minimal() {
           </div>
         </section>
 
-        {/* ── FAQ ── */}
-        <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
-          <div className="max-w-[1000px] mx-auto">
-            <AnimatedHeading text={'Frequently asked'} className={`${hXL} mb-12`} highlight={['asked']} accentClass="text-[#09A43E]" />
-            <Faq />
-          </div>
-        </section>
-
         {/* ── CLOSING CTA ── */}
         <section className="py-28 md:py-40 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto text-center">
@@ -325,6 +310,14 @@ export default function V2Minimal() {
                 Apply for the Pavilion
               </a>
             </Magnetic>
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
+          <div className="max-w-[1000px] mx-auto">
+            <AnimatedHeading text={'Frequently asked'} className={`${hXL} mb-12`} highlight={['asked']} accentClass="text-[#09A43E]" />
+            <Faq />
           </div>
         </section>
 
