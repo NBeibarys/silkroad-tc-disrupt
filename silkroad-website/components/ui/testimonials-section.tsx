@@ -30,7 +30,7 @@ interface CardProps {
 function FloatCard({ quote, name, company, photo, index, dark, color = '#09A43E', mx, my, revealed }: CardProps) {
   const [l, tp, depth, phase, amp] = LAYOUT[index]
   const [tick, setTick] = useState(0)
-  const rafRef = useRef<number>()
+  const rafRef = useRef<number | null>(null)
 
   useEffect(() => {
     let start: number
@@ -40,7 +40,7 @@ function FloatCard({ quote, name, company, photo, index, dark, color = '#09A43E'
       rafRef.current = requestAnimationFrame(loop)
     }
     rafRef.current = requestAnimationFrame(loop)
-    return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current) }
+    return () => { if (rafRef.current !== null) cancelAnimationFrame(rafRef.current) }
   }, [])
 
   const t = tick * 0.001
