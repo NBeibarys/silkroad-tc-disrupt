@@ -229,11 +229,15 @@ export default function V2Minimal() {
               {TEAM.map((m, i) => (
                 <Reveal key={m.name} delay={i * 0.06}>
                   <ParallaxImage src={m.photo} alt={m.name} className="aspect-[4/5] rounded-2xl mb-4" amount={30} />
-                  <h3 className="text-base font-black uppercase tracking-[0.04em] leading-tight mb-1">{m.name}</h3>
+                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="block hover:text-[#09A43E] transition-colors">
+                    <h3 className="text-base font-black uppercase tracking-[0.04em] leading-tight mb-1">{m.name}</h3>
+                  </a>
                   <p className="text-sm text-[#09A43E] font-medium mb-4">{m.role}</p>
                   <div className="grid grid-cols-2 gap-x-3 gap-y-3">
                     {m.logos.map((logo) => (
-                      <img key={logo.alt} src={logo.url} alt={logo.alt} className="h-16 w-full max-w-[140px] object-contain object-left" />
+                      <a key={logo.alt} href={logo.href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center h-16 rounded-lg p-1.5 hover:bg-neutral-50 transition-colors">
+                        <img src={logo.url} alt={logo.alt} className="h-full w-full object-contain" />
+                      </a>
                     ))}
                   </div>
                 </Reveal>
