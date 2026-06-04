@@ -122,7 +122,7 @@ export function TestimonialsSection() {
         animate={revealed ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8, ease: EASE }}
       >
-        <h2 className="font-archivo font-black tracking-[-0.05em] leading-[0.9] text-5xl md:text-6xl">
+        <h2 className="font-inter font-black uppercase tracking-[0.02em] leading-[0.95] text-[clamp(2.2rem,5.5vw,5rem)]">
           From <span className="text-[#09A43E]">founders</span> like you
         </h2>
       </motion.div>

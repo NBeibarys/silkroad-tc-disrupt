@@ -145,7 +145,7 @@ export default function V2Minimal() {
               </div>
               <Reveal delay={0.1} className="md:col-span-5">
                 <div className="border-l-2 border-neutral-200 pl-6">
-                  <p className="text-xl text-neutral-600 leading-relaxed">{TC_ABOUT.description}</p>
+                  <p className="text-xl text-[#374151] leading-relaxed">{TC_ABOUT.description}</p>
                   <a href="https://techcrunch.com/events/techcrunch-disrupt/" target="_blank" rel="noopener noreferrer"
                     className="inline-block mt-6 text-[#09A43E] font-medium border-b border-[#09A43E] pb-0.5 hover:text-neutral-900 hover:border-neutral-900 transition-colors">
                     Learn more →
@@ -169,7 +169,7 @@ export default function V2Minimal() {
           <div className="max-w-[1400px] mx-auto">
             <Reveal className="pb-16 border-b border-neutral-200 mb-0">
               <AnimatedHeading text={'A proven record\nat Disrupt'} className={`${hXL} mb-5`} highlight={['Disrupt']} accentClass="text-[#09A43E]" />
-              <p className="text-lg text-neutral-500 font-medium max-w-[52ch]">We have a history of bringing the biggest and best cohorts to the conference.</p>
+              <p className="text-lg text-[#374151] font-medium max-w-[52ch]">We have a history of bringing the biggest and best cohorts to the conference.</p>
             </Reveal>
             <div className="grid grid-cols-2 md:grid-cols-5">
               {TRACK_RECORD.map((s, i) => (
@@ -212,8 +212,8 @@ export default function V2Minimal() {
         <section className="py-24 md:py-32 px-8 border-t border-neutral-200">
           <div className="max-w-[1400px] mx-auto">
             <Reveal>
-              <h2 className="font-archivo font-black text-3xl md:text-4xl tracking-tight text-center mb-3">See the Action</h2>
-              <p className="text-neutral-500 text-center mb-10 text-lg">Experience the energy of the pavilion and the conference floor.</p>
+              <h2 className="font-inter font-black uppercase tracking-[0.02em] leading-[0.95] text-[clamp(2.2rem,5.5vw,5rem)] text-center mb-3">See the Action</h2>
+              <p className="text-[#374151] text-center mb-10 text-lg">Experience the energy of the pavilion and the conference floor.</p>
             </Reveal>
             <Reveal><GalleryCarousel slides={GALLERY} heightClass="h-[340px] md:h-[640px]" className="!rounded-3xl" /></Reveal>
           </div>
