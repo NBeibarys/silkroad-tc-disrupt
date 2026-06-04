@@ -15,7 +15,7 @@ export function TestimonialsSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {TESTIMONIALS.map((t, i) => {
             const initials = t.name.split(' ').map(x => x[0]).join('').slice(0, 2)
-            const dark = i === 0 || i === 5
+            const dark = i === 0
             return (
               <Reveal key={t.name} delay={i * 0.05}>
                 <div className={[
