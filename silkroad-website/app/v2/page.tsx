@@ -43,11 +43,11 @@ function Faq() {
           <button onClick={() => setOpen(open === i ? null : i)}
             className="w-full flex justify-between items-center gap-6 py-7 text-left cursor-pointer group">
             <span className="text-2xl md:text-4xl font-semibold tracking-tight text-neutral-900 group-hover:text-[#09A43E] transition-colors">{item.q}</span>
-            <span className={`text-3xl text-neutral-400 transition-transform duration-300 ${open === i ? 'rotate-45 text-[#09A43E]' : ''}`}>+</span>
+            <span className={`text-3xl text-[#374151] transition-transform duration-300 ${open === i ? 'rotate-45 text-[#09A43E]' : ''}`}>+</span>
           </button>
           <motion.div initial={false} animate={{ height: open === i ? 'auto' : 0, opacity: open === i ? 1 : 0 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }} className="overflow-hidden">
-            <p className="pb-7 -mt-2 max-w-2xl text-neutral-500 text-lg leading-relaxed">{item.a}</p>
+            <p className="pb-7 -mt-2 max-w-2xl text-[#374151] text-lg leading-relaxed">{item.a}</p>
           </motion.div>
         </div>
       ))}
@@ -79,7 +79,7 @@ export default function V2Minimal() {
                 <Image src={BRAND.tcLogo} alt="TechCrunch" width={160} height={56} className="hidden sm:block h-11 w-auto object-contain" unoptimized />
               </a>
             </div>
-            <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-neutral-700">
+            <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[#374151]">
               {[['About Disrupt', '#s-about'], ['The Offer', '#s-offer'], ['Previous Participants', '#s-participants'], ['Our Record', '#s-record'], ['Partners', '#s-partners'], ['Team', '#s-team']].map(([l, h]) => (
                 <a key={l} href={h} className="hover:text-[#09A43E] transition-colors whitespace-nowrap">{l}</a>
               ))}
@@ -100,7 +100,7 @@ export default function V2Minimal() {
           </Reveal>
 
           <Reveal delay={0.15}>
-            <p className="text-[16px] md:text-[17px] text-[#475569] max-w-[500px] leading-relaxed mb-8 px-4">
+            <p className="text-[16px] md:text-[17px] text-[#374151] max-w-[500px] leading-relaxed mb-8 px-4">
               The largest Central Asian startup pavilion at Disrupt. Investors, press, and global founders, all in one room.
             </p>
           </Reveal>
@@ -117,19 +117,19 @@ export default function V2Minimal() {
           <Reveal delay={0.25} className="w-full max-w-[820px]">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
               <div className="flex flex-col items-center gap-1 px-2 py-5">
-                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Apply before</span>
+                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#374151]">Apply before</span>
                 <span className="font-archivo font-black text-[1.4rem] tracking-[-0.03em] text-neutral-900 leading-tight whitespace-nowrap">September 15, 2026</span>
-                <span className="text-[14px] text-[#64748b] font-medium">rolling review</span>
+                <span className="text-[14px] text-[#374151] font-medium">rolling review</span>
               </div>
               <div className="flex flex-col items-center gap-1 px-2 py-5">
-                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Event duration</span>
+                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#374151]">Event duration</span>
                 <span className="font-archivo font-black text-[1.4rem] tracking-[-0.03em] text-[#09A43E] leading-tight whitespace-nowrap">3 Days</span>
-                <span className="text-[14px] text-[#64748b] font-medium">Oct 13, 14, 15 in San Francisco</span>
+                <span className="text-[14px] text-[#374151] font-medium">Oct 13, 14, 15 in San Francisco</span>
               </div>
               <div className="flex flex-col items-center gap-1 px-2 py-5">
-                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#64748b]">Price</span>
+                <span className="text-[13px] font-semibold uppercase tracking-[0.1em] text-[#374151]">Price</span>
                 <span className="font-archivo font-black text-[1.4rem] tracking-[-0.03em] text-neutral-900 leading-tight whitespace-nowrap">$7,000</span>
-                <span className="text-[14px] text-[#64748b] font-medium">per startup, all-inclusive</span>
+                <span className="text-[14px] text-[#374151] font-medium">per startup, all-inclusive</span>
               </div>
             </div>
           </Reveal>
@@ -189,7 +189,7 @@ export default function V2Minimal() {
                           : s.display}
                     </div>
                     <span className="block h-[2px] bg-[#09A43E] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out mb-3 rounded-full" />
-                    <p className="text-[1rem] text-neutral-500 font-medium leading-snug">{s.label}</p>
+                    <p className="text-[1rem] text-[#374151] font-medium leading-snug">{s.label}</p>
                   </div>
                 </Reveal>
               ))}
@@ -258,7 +258,7 @@ export default function V2Minimal() {
                     {p.logo ? (
                       <Image src={p.logo} alt={p.name} width={160} height={64} className="max-h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300" unoptimized />
                     ) : (
-                      <span className="text-sm font-semibold text-neutral-500 group-hover:text-neutral-900 transition-colors text-center">{p.name}</span>
+                      <span className="text-sm font-semibold text-[#374151] group-hover:text-neutral-900 transition-colors text-center">{p.name}</span>
                     )}
                   </a>
                 </Reveal>
@@ -285,7 +285,7 @@ export default function V2Minimal() {
                   <div className="min-h-[6rem]">
                     <h3 className="font-bold text-[1rem] tracking-tight text-neutral-900 mb-1 leading-tight">{s.name}</h3>
                     <p className="text-[0.88rem] font-semibold text-[#09A43E] mb-1">{s.company}</p>
-                    <p className="text-[0.78rem] text-neutral-400 leading-snug">{s.role}</p>
+                    <p className="text-[0.78rem] text-[#374151] leading-snug">{s.role}</p>
                   </div>
                   <a href={s.companyUrl} target="_blank" rel="noopener noreferrer" className="block mt-1 transition-opacity hover:opacity-65">
                     {/* eslint-disable-next-line @next/next/no-img-element */}

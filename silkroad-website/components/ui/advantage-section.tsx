@@ -121,7 +121,7 @@ function AdvantageItem({
 
       {/* desc — sequential reveal after underline */}
       <motion.p
-        className="text-neutral-500 leading-relaxed text-lg relative max-w-[40ch]"
+        className="text-[#374151] leading-relaxed text-lg relative max-w-[40ch]"
         animate={{ opacity: active ? 1 : 0, y: active ? 0 : 6 }}
         transition={{ duration: 0.35, delay: active ? 0.4 : 0, ease: EASE }}
       >

@@ -64,7 +64,7 @@ function OfferCol({ title, description, index, wm, active, hovered, onHover }: {
         />
       </h3>
 
-      <p className="text-neutral-500 text-[0.8rem] leading-[1.6]">{description}</p>
+      <p className="text-[#374151] text-[0.8rem] leading-[1.6]">{description}</p>
     </div>
   )
 }
@@ -129,7 +129,7 @@ export function OfferSection() {
             >
               {OFFER.price}
             </div>
-            <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-neutral-400 mt-2">
+            <p className="font-mono text-[11px] tracking-[0.1em] uppercase text-[#374151] mt-2">
               per startup - all inclusive
             </p>
           </motion.div>

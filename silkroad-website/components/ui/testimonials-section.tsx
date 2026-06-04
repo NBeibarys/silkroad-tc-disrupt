@@ -65,7 +65,7 @@ function FloatCard({ quote, name, company, photo, index, dark, color = '#09A43E'
       }}
     >
       <div className="text-2xl leading-none mb-2 font-serif" style={{ color: '#09A43E' }}>"</div>
-      <p className={['text-[0.76rem] leading-[1.65] mb-3', dark ? 'text-neutral-300' : 'text-neutral-600'].join(' ')}>
+      <p className={['text-[0.76rem] leading-[1.65] mb-3', dark ? 'text-neutral-300' : 'text-[#374151]'].join(' ')}>
         {quote}
       </p>
       <div className="flex items-center gap-2">
@@ -75,7 +75,7 @@ function FloatCard({ quote, name, company, photo, index, dark, color = '#09A43E'
         }
         <div>
           <div className="font-bold text-[0.75rem]">{name}</div>
-          <div className={['text-[0.65rem] font-mono tracking-wide', dark ? 'text-neutral-500' : 'text-neutral-400'].join(' ')}>{company}</div>
+          <div className={['text-[0.65rem] font-mono tracking-wide', dark ? 'text-neutral-500' : 'text-[#374151]'].join(' ')}>{company}</div>
         </div>
       </div>
     </motion.div>
