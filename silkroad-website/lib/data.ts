@@ -324,7 +324,7 @@ export const PARTNERS_LOGOS = [
   { name: 'NU Impact Foundation', url: 'https://nuif.org', logo: 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtycbkCRdE3bvDCRejpU4YVyz86nkLAqTI2tH5' },
 ]
 
-export const PARTICIPANTS_IMAGE = 'https://h8fc5jug4z.ufs.sh/f/9w2v7TyUGsjtUiYs7M9XVFDvIMiK3gntTcj9A6OfEzSQpuHZ'
+export const PARTICIPANTS_IMAGE = 'https://utfs.io/f/5lAbzPMR2hDEKRRC0HsjaSqofPs5vANlthXD4EHLWiu80pg3'
 
 export const FAQ = [
   { q: 'What is the exact cost?', a: 'The total cost is $7,000 per startup.' },
