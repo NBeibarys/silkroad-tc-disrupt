@@ -190,7 +190,7 @@ export default function V2Minimal() {
             <Reveal delay={0.1}>
               <div id="s-participants" className="mt-16">
                 <div className="mb-8">
-                  <h3 className="font-inter font-black uppercase tracking-[0.02em] text-2xl md:text-3xl">Previous Participants</h3>
+                  <h3 className={hXL}>Previous Participants</h3>
                 </div>
                 <div className="rounded-3xl border border-neutral-200 bg-white overflow-hidden">
                   <Image src={PARTICIPANTS_IMAGE} alt="Disrupt 2025 Startup Alumni" width={1600} height={800} className="w-full h-auto" unoptimized />
