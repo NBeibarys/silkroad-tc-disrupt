@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
+import { Linkedin } from 'lucide-react'
 import { GalleryCarousel } from '@/components/ui/gallery-carousel'
 import { AdvantageSection } from '@/components/ui/advantage-section'
 import { OfferSection } from '@/components/ui/offer-section'
@@ -221,8 +222,9 @@ export default function V2Minimal() {
               {TEAM.map((m, i) => (
                 <Reveal key={m.name} delay={i * 0.06}>
                   <ParallaxImage src={m.photo} alt={m.name} className="aspect-[4/5] rounded-2xl mb-4" amount={30} />
-                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="block hover:text-[#09A43E] transition-colors">
-                    <h3 className="text-base font-black uppercase tracking-[0.04em] leading-tight mb-1">{m.name}</h3>
+                  <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 mb-1 hover:text-[#09A43E] transition-colors">
+                    <h3 className="text-base font-black uppercase tracking-[0.04em] leading-tight">{m.name}</h3>
+                    <Linkedin size={14} className="shrink-0" />
                   </a>
                   <p className="text-sm text-[#09A43E] font-medium mb-4">{m.role}</p>
                   <div className="grid grid-cols-2 gap-x-3 gap-y-3">
