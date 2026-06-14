@@ -1,5 +1,1 @@
-import { redirect } from 'next/navigation'
-
-export default function Home() {
-  redirect('/v2')
-}
+export { default } from './v2/page'
